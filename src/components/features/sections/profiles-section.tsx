@@ -17,7 +17,7 @@ const ProfilesSection = ({
       <h2 className="scroll-m-20 mb-4 font-semibold tracking-tight first:mt-0 text-3xl md:text-4xl text-center">
         Other Profiles
       </h2>
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 max-w-7xl mx-auto pt-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 max-w-7xl mx-auto pt-10">
         {profiles.map((e) => (
           <Link href={e.link || ""} key={e.name} target="_blank">
             <div
