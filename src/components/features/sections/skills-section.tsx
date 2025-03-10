@@ -3,7 +3,10 @@
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
 import {
   SiChai,
+  SiDart,
   SiExpress,
+  SiFirebase,
+  SiFlutter,
   SiGit,
   SiJest,
   SiMocha,
@@ -125,9 +128,18 @@ function getSkillIconAndColor(skill: string): [IconType, string] {
     return [SiGit, "#F05032"];
   }
 
-  if (skill.startsWith("rest")) {
-    return [CodeIcon, "#000000"];
+  if (skill.startsWith("flutter")) {
+    return [SiFlutter, "#02569B"];
   }
+
+  if (skill.startsWith("dart")) {
+    return [SiDart, "#0175C2"];
+  }
+
+  if (skill.startsWith("firebase")) {
+    return [SiFirebase, "#DD2C00"];
+  }
+
   return [CodeIcon, "#000000"];
 }
 
