@@ -11,10 +11,10 @@ const AboutSection = ({
 }) => {
   return (
     <section className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center snap-always snap-center mt-20 mb-20 lg:mb-40">
-      <h2 className="scroll-m-20 text-3xl md:text-5xl font-semibold tracking-tight first:mt-0 mb-20 text-center">
+      <h2 className="scroll-m-20 text-3xl md:text-5xl font-semibold tracking-tight first:mt-0 md:mb-6 text-center">
         About Me
       </h2>
-      <BentoGrid>
+      <BentoGrid className="pt-10">
         <BentoGridItem
           title={
             <span className="md:text-3xl xl:text-4xl">
@@ -40,7 +40,7 @@ const AboutSection = ({
           }
           className="col-span-2"
           header={
-            <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl  dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)]  border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-black">
+            <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl  dark:bg-dot-white/[0.2] bg-dot-black/[0.2]   border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-black">
               <AboutAnimatedLine />
             </div>
           }

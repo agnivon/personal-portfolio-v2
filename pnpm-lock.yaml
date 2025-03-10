@@ -107,6 +107,9 @@ importers:
       three:
         specifier: ^0.174.0
         version: 0.174.0
+      uuid:
+        specifier: ^11.1.0
+        version: 11.1.0
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3

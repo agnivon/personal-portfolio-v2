@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useId } from "react";
 import GradientHeading from "../typography/gradient-heading";
+import { v4 as uuidv4 } from "uuid";
+import React from "react";
 
 const ProfilesSection = ({
   profiles,
@@ -15,10 +17,13 @@ const ProfilesSection = ({
       <h2 className="scroll-m-20 mb-4 font-semibold tracking-tight first:mt-0 text-3xl md:text-4xl text-center">
         Other Profiles
       </h2>
-      <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 max-w-7xl mx-auto pt-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 max-w-7xl mx-auto pt-10">
         {profiles.map((e) => (
           <Link href={e.link || ""} key={e.name} target="_blank">
-            <div className="relative bg-gradient-to-b dark:from-neutral-900 from-neutral-100 dark:to-neutral-950 to-white p-6 rounded-3xl overflow-hidden flex justify-between">
+            <div
+              className="relative bg-gradient-to-b dark:from-neutral-900 from-neutral-100 dark:to-neutral-950 to-white p-6 rounded-3xl overflow-hidden flex justify-between"
+              suppressHydrationWarning
+            >
               <Grid size={20} />
               <p className="text-base font-bold text-neutral-800 dark:text-white relative z-20">
                 {e.name}
@@ -68,7 +73,21 @@ const Grid = ({ pattern, size }: { pattern?: number[][]; size?: number }) => {
   );
 };
 
-function GridPattern({ width, height, x, y, squares, ...props }: any) {
+function GridPattern({
+  width,
+  height,
+  x,
+  y,
+  squares,
+  ...props
+}: {
+  width: number;
+  height: number;
+  x: string;
+  y: string;
+  squares: number[][];
+  className?: string;
+}) {
   const patternId = useId();
 
   return (
@@ -93,10 +112,10 @@ function GridPattern({ width, height, x, y, squares, ...props }: any) {
       />
       {squares && (
         <svg x={x} y={y} className="overflow-visible">
-          {squares.map(([x, y]: any) => (
+          {squares.map(([x, y], i) => (
             <rect
               strokeWidth="0"
-              key={`${x}-${y}`}
+              key={`${x}-${y}-${i}`}
               width={width + 1}
               height={height + 1}
               x={x * width}

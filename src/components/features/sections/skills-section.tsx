@@ -30,7 +30,7 @@ import { IconType } from "react-icons/lib";
 const SkillsSection = ({ skills }: { skills: string[] }) => {
   return (
     <section className="my-20 max-w-7xl mx-auto p-4">
-      <h2 className="scroll-m-20 mb-6 text-3xl md:text-5xl font-semibold tracking-tight first:mt-0 px-4 text-center">
+      <h2 className="scroll-m-20 mb-6 text-3xl md:text-5xl font-semibold tracking-tight first:mt-0 text-center">
         Expertise
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8 mx-auto pt-10 place-content-center w-fit">
