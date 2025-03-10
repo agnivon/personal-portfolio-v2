@@ -11,10 +11,10 @@ const AboutSection = ({
 }) => {
   return (
     <section className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center snap-always snap-center mt-20 mb-20 lg:mb-40">
-      <h2 className="scroll-m-20 text-3xl md:text-5xl font-semibold tracking-tight first:mt-0 mb-20 text-center">
+      <h2 className="scroll-m-20 text-3xl md:text-5xl font-semibold tracking-tight first:mt-0 md:mb-6 text-center">
         About Me
       </h2>
-      <BentoGrid>
+      <BentoGrid className="pt-10">
         <BentoGridItem
           title={
             <span className="md:text-3xl xl:text-4xl">
