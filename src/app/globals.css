@@ -130,4 +130,10 @@
   button {
     @apply cursor-pointer
   }
+
+  @supports (-webkit-touch-callout: none) {
+    .touch\:hidden {
+      display: none;
+    }
+  }
 }

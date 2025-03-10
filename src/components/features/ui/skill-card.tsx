@@ -38,10 +38,10 @@ const SkillCard = ({
       </AnimatePresence>
 
       <div className="relative z-20">
-        <div className="text-center group-hover/canvas-card:-translate-y-4 group-hover/canvas-card:opacity-0 transition duration-200 flex items-center justify-center absolute left-0 right-0 top-0 bottom-0">
+        <div className="text-center group-hover/canvas-card:-translate-y-4 group-hover/canvas-card:opacity-0 transition duration-200 flex items-center justify-center md:absolute left-0 right-0 top-0 bottom-0">
           {icon}
         </div>
-        <h2 className="dark:text-white text-xl md:text-3xl opacity-0 group-hover/canvas-card:opacity-100 relative z-10 text-black mt-4  font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200 capitalize select-none text-center">
+        <h2 className="dark:text-white text-xl md:text-3xl md:opacity-0 group-hover/canvas-card:opacity-100 relative z-10 text-black mt-4  font-bold group-hover/canvas-card:text-white group-hover/canvas-card:-translate-y-2 transition duration-200 capitalize select-none text-center">
           {title}
         </h2>
       </div>
