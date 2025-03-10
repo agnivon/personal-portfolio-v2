@@ -10,7 +10,7 @@ const AboutSection = ({
   profile: PROFILES_QUERYResult[number];
 }) => {
   return (
-    <section className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center snap-always snap-center my-20">
+    <section className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center snap-always snap-center mt-20 mb-20 lg:mb-40">
       <h2 className="scroll-m-20 text-3xl md:text-5xl font-semibold tracking-tight first:mt-0 mb-20 text-center">
         About Me
       </h2>

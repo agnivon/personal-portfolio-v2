@@ -65,7 +65,8 @@ export const PROJECTS_V2_QUERY = defineQuery(`*[_type == "project"]{
           screenshots[] { alt, "image": asset->url },
           tagline,
           "logo": logo.asset->url,
-          description
+          description,
+          technologies,
         }`);
 
 export async function getProfiles() {
