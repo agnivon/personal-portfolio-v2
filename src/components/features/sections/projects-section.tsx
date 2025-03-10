@@ -32,7 +32,7 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
   }, [active]);
 
   return (
-    <section className="py-20 max-w-7xl mx-auto p-4">
+    <section className="my-20 max-w-7xl mx-auto p-4">
       <h2 className="scroll-m-20 mb-6 text-3xl md:text-5xl font-semibold tracking-tight first:mt-0 px-4 text-center">
         Projects
       </h2>

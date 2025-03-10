@@ -38,7 +38,7 @@ const ExperienceSection = ({
     };
   });
   return (
-    <div className="relative w-full py-20">
+    <div className="relative w-full mt-20">
       <section className="max-w-7xl mx-auto relative">
         <h2 className="scroll-m-20 text-3xl md:text-5xl font-semibold tracking-tight first:mt-0 px-4 text-center">
           Work <span className="text-accent-foreground">Experience</span>
