@@ -23,13 +23,21 @@ const AboutSection = ({
           }
           description={
             <span className="md:text-base xl:text-lg">
-              <PortableText value={profile.altBio1?.description!} />
+              {profile.altBio1?.description && (
+                <PortableText value={profile.altBio1?.description} />
+              )}
             </span>
           }
         />
         <BentoGridItem
           title={profile.altBio2?.heading}
-          description={<PortableText value={profile.altBio2?.description!} />}
+          description={
+            <>
+              {profile.altBio2?.description && (
+                <PortableText value={profile.altBio2?.description} />
+              )}
+            </>
+          }
           className="col-span-2"
           header={
             <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl  dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)]  border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-black">
@@ -39,7 +47,13 @@ const AboutSection = ({
         />
         <BentoGridItem
           title={profile.altBio3?.heading}
-          description={<PortableText value={profile.altBio3?.description!} />}
+          description={
+            <>
+              {profile.altBio3?.description && (
+                <PortableText value={profile.altBio3?.description} />
+              )}
+            </>
+          }
           className="col-span-2"
           header={
             <div className="flex-1 w-full h-full min-h-[6rem] rounded-xl dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)] border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-black relative">
@@ -55,7 +69,9 @@ const AboutSection = ({
           }
           description={
             <span className="lg:text-base">
-              <PortableText value={profile.altBio3?.description!} />
+              {profile.altBio3?.description && (
+                <PortableText value={profile.altBio3?.description} />
+              )}
             </span>
           }
           className="col-span-1"

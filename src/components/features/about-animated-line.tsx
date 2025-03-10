@@ -43,7 +43,7 @@ const AboutAnimatedLine = () => {
 
   useEffect(() => {
     animate(sequence, {
-      // @ts-ignore
+      // @ts-expect-error idk
       repeat: Infinity,
       repeatDelay: 1,
     });

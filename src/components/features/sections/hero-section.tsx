@@ -3,9 +3,8 @@ import { Vortex } from "@/components/ui/vortex";
 import { PROFILES_QUERYResult } from "@/sanity/lib/types";
 import { SiX } from "@icons-pack/react-simple-icons";
 import { BiLogoGithub, BiLogoLinkedin } from "react-icons/bi";
-import BorderMagicButton from "../ui/border-magic-button";
 import GradientHeading from "../typography/gradient-heading";
-import { SparklesCore } from "@/components/ui/sparkles";
+import BorderMagicButton from "../ui/border-magic-button";
 
 export function getSocialLinks(socialLinks: Record<string, string>) {
   return Object.entries(socialLinks)

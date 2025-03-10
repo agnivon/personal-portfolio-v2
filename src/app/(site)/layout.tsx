@@ -19,7 +19,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return getSiteMetadata();
 }
 
-export default function ({
+export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
