@@ -3,7 +3,10 @@
 import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
 import {
   SiChai,
+  SiDart,
   SiExpress,
+  SiFirebase,
+  SiFlutter,
   SiGit,
   SiJest,
   SiMocha,
@@ -26,7 +29,7 @@ import { IconType } from "react-icons/lib";
 
 const SkillsSection = ({ skills }: { skills: string[] }) => {
   return (
-    <section className="py-20 max-w-7xl mx-auto p-4">
+    <section className="my-20 max-w-7xl mx-auto p-4">
       <h2 className="scroll-m-20 mb-6 text-3xl md:text-5xl font-semibold tracking-tight first:mt-0 px-4 text-center">
         Expertise
       </h2>
@@ -125,9 +128,18 @@ function getSkillIconAndColor(skill: string): [IconType, string] {
     return [SiGit, "#F05032"];
   }
 
-  if (skill.startsWith("rest")) {
-    return [CodeIcon, "#000000"];
+  if (skill.startsWith("flutter")) {
+    return [SiFlutter, "#02569B"];
   }
+
+  if (skill.startsWith("dart")) {
+    return [SiDart, "#0175C2"];
+  }
+
+  if (skill.startsWith("firebase")) {
+    return [SiFirebase, "#DD2C00"];
+  }
+
   return [CodeIcon, "#000000"];
 }
 

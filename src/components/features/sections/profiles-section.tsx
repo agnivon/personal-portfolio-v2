@@ -11,7 +11,7 @@ const ProfilesSection = ({
 }) => {
   if (!profiles) return <></>;
   return (
-    <section className="py-20 max-w-7xl mx-auto p-4">
+    <section className="my-20 max-w-7xl mx-auto p-4">
       <h2 className="scroll-m-20 mb-4 font-semibold tracking-tight first:mt-0 text-3xl md:text-4xl text-center">
         Other Profiles
       </h2>

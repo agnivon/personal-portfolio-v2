@@ -3,7 +3,7 @@ import { LinkPreview } from "../ui/link-preview";
 
 const Footer = () => {
   return (
-    <div className="px-10 py-5 flex justify-between bg-gradient-to-t from-black to-transparent">
+    <div className="px-10 py-5 flex max-sm:flex-col items-center justify-between bg-gradient-to-t from-black to-transparent">
       <span>{`All Rights Reserved @${new Date().getFullYear()}`}</span>
       <span>
         Built using{" "}
