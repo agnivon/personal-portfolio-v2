@@ -110,7 +110,7 @@ export async function getProjectMetadata(
   return {
     title: `${project?.name} | Project | ${title}`,
     description: project?.tagline,
-    keywords: keywords,
+    keywords: keywords.concat(project?.keywords || []),
     authors: [
       {
         name: "Agnivo Neogi",
