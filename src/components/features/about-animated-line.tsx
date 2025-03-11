@@ -1,6 +1,8 @@
 "use client";
 
 import {
+  SiDart,
+  SiFlutter,
   SiMongodb,
   SiMysql,
   SiNextdotjs,
@@ -22,9 +24,10 @@ const AboutAnimatedLine = () => {
   const icons = [
     SiRedux,
     SiTailwindcss,
-    SiNextdotjs,
     SiTypescript,
-    SiSpring,
+    SiNextdotjs,
+    SiFlutter,
+    SiDart,
     SiMongodb,
     SiNodedotjs,
     SiMysql,

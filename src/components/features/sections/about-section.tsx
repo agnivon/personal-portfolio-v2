@@ -64,13 +64,13 @@ const AboutSection = ({
         <BentoGridItem
           title={
             <span className="md:text-base lg:text-lg">
-              {profile.altBio3?.heading}
+              {profile.altBio4?.heading}
             </span>
           }
           description={
             <span className="lg:text-base">
-              {profile.altBio3?.description && (
-                <PortableText value={profile.altBio3?.description} />
+              {profile.altBio4?.description && (
+                <PortableText value={profile.altBio4?.description} />
               )}
             </span>
           }

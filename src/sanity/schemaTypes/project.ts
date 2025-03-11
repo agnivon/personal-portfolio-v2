@@ -97,6 +97,13 @@ const project = {
       description: "Add a list of technologies used in this project",
       of: [{ type: "string" }],
     }),
+    defineField({
+      name: "keywords",
+      title: "Keywords",
+      type: "array",
+      description: "Add a list of keywords for this project",
+      of: [{ type: "string" }],
+    }),
   ],
 };
 
