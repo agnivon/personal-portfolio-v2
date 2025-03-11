@@ -12,6 +12,7 @@ export const PROFILES_QUERY = defineQuery(`*[_type == "profile"]{
             altBio1,
             altBio2,
             altBio3,
+            altBio4,
             email,
             "resumeURL": resumeURL.asset->url,
             socialLinks,
@@ -54,6 +55,7 @@ export const PROJECT_BY_SLUG_QUERY =
           tagline,
           description,
           technologies,
+          keywords,
         }`);
 
 export const PROJECTS_V2_QUERY = defineQuery(`*[_type == "project"]{

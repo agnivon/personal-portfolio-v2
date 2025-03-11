@@ -112,6 +112,7 @@ export type Project = {
     _key: string;
   }>;
   technologies?: Array<string>;
+  keywords?: Array<string>;
 };
 
 export type Slug = {
@@ -388,7 +389,7 @@ export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette
 export declare const internalGroqTypeReferenceTo: unique symbol;
 // Source: ./src/sanity/lib/queries.ts
 // Variable: PROFILES_QUERY
-// Query: *[_type == "profile"]{            _id,            fullName,            headline,            profileImage { alt, "image": asset->url },            shortBio,            location,            fullBio,            altBio1,            altBio2,            altBio3,            email,            "resumeURL": resumeURL.asset->url,            socialLinks,            otherProfileLinks[] { name, link, "logo": logo { alt, "image": asset->url } },            skills          }
+// Query: *[_type == "profile"]{            _id,            fullName,            headline,            profileImage { alt, "image": asset->url },            shortBio,            location,            fullBio,            altBio1,            altBio2,            altBio3,            altBio4,            email,            "resumeURL": resumeURL.asset->url,            socialLinks,            otherProfileLinks[] { name, link, "logo": logo { alt, "image": asset->url } },            skills          }
 export type PROFILES_QUERYResult = Array<{
   _id: string;
   fullName: string | null;
@@ -480,6 +481,27 @@ export type PROFILES_QUERYResult = Array<{
       _key: string;
     }>;
   } | null;
+  altBio4: {
+    heading?: string;
+    description?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+  } | null;
   email: string | null;
   resumeURL: string | null;
   socialLinks: {
@@ -523,7 +545,7 @@ export type PROJECTS_QUERYResult = Array<{
   logo: string | null;
 }>;
 // Variable: PROJECT_BY_SLUG_QUERY
-// Query: *[_type == "project" && slug.current == $slug][0]{          _id,          name,          projectUrl,          githubUrl,          "logo": logo.asset->url,          coverImage { alt, "image": asset->url },          screenshots[] { alt, "image": asset->url },          tagline,          description,          technologies,        }
+// Query: *[_type == "project" && slug.current == $slug][0]{          _id,          name,          projectUrl,          githubUrl,          "logo": logo.asset->url,          coverImage { alt, "image": asset->url },          screenshots[] { alt, "image": asset->url },          tagline,          description,          technologies,          keywords,        }
 export type PROJECT_BY_SLUG_QUERYResult = {
   _id: string;
   name: string | null;
@@ -558,6 +580,7 @@ export type PROJECT_BY_SLUG_QUERYResult = {
     _key: string;
   }> | null;
   technologies: Array<string> | null;
+  keywords: Array<string> | null;
 } | null;
 // Variable: PROJECTS_V2_QUERY
 // Query: *[_type == "project"]{          _id,          name,          projectUrl,          githubUrl,          coverImage { alt, "image": asset->url },          screenshots[] { alt, "image": asset->url },          tagline,          "logo": logo.asset->url,          description,          technologies,        }
@@ -601,11 +624,11 @@ export type PROJECTS_V2_QUERYResult = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "*[_type == \"profile\"]{\n            _id,\n            fullName,\n            headline,\n            profileImage { alt, \"image\": asset->url },\n            shortBio,\n            location,\n            fullBio,\n            altBio1,\n            altBio2,\n            altBio3,\n            email,\n            \"resumeURL\": resumeURL.asset->url,\n            socialLinks,\n            otherProfileLinks[] { name, link, \"logo\": logo { alt, \"image\": asset->url } },\n            skills\n          }": PROFILES_QUERYResult;
+    "*[_type == \"profile\"]{\n            _id,\n            fullName,\n            headline,\n            profileImage { alt, \"image\": asset->url },\n            shortBio,\n            location,\n            fullBio,\n            altBio1,\n            altBio2,\n            altBio3,\n            altBio4,\n            email,\n            \"resumeURL\": resumeURL.asset->url,\n            socialLinks,\n            otherProfileLinks[] { name, link, \"logo\": logo { alt, \"image\": asset->url } },\n            skills\n          }": PROFILES_QUERYResult;
     "count(*[_type == \"profile\"])": PROFILE_COUNT_QUERYResult;
     "*[_type == \"job\"] | order(startDate desc){\n          _id,\n          name,\n          jobTitle,\n          \"logo\": logo.asset->url,\n          url,\n          description,\n          startDate,\n          endDate,\n        }": JOBS_QUERYResult;
     "*[_type == \"project\"] | order(createdAt desc) {\n          _id, \n          name,\n          \"slug\": slug.current,\n          tagline,\n          \"logo\": logo.asset->url,\n        }": PROJECTS_QUERYResult;
-    "*[_type == \"project\" && slug.current == $slug][0]{\n          _id,\n          name,\n          projectUrl,\n          githubUrl,\n          \"logo\": logo.asset->url,\n          coverImage { alt, \"image\": asset->url },\n          screenshots[] { alt, \"image\": asset->url },\n          tagline,\n          description,\n          technologies,\n        }": PROJECT_BY_SLUG_QUERYResult;
+    "*[_type == \"project\" && slug.current == $slug][0]{\n          _id,\n          name,\n          projectUrl,\n          githubUrl,\n          \"logo\": logo.asset->url,\n          coverImage { alt, \"image\": asset->url },\n          screenshots[] { alt, \"image\": asset->url },\n          tagline,\n          description,\n          technologies,\n          keywords,\n        }": PROJECT_BY_SLUG_QUERYResult;
     "*[_type == \"project\"]{\n          _id,\n          name,\n          projectUrl,\n          githubUrl,\n          coverImage { alt, \"image\": asset->url },\n          screenshots[] { alt, \"image\": asset->url },\n          tagline,\n          \"logo\": logo.asset->url,\n          description,\n          technologies,\n        }": PROJECTS_V2_QUERYResult;
   }
 }

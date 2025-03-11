@@ -39,7 +39,7 @@ export async function ProjectPage({
   return (
     <GridBackground className="snap-y snap-normal w-full min-h-screen overflow-auto p-20">
       <div className="max-w-3xl mx-auto">
-        <div className="flex items-start justify-between mb-4">
+        <div className="flex max-sm:flex-col items-start justify-between mb-4">
           <h1 className="font-bold lg:text-5xl text-3xl lg:leading-tight mb-4">
             {project?.name}
           </h1>
