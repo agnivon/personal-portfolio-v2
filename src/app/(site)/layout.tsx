@@ -4,7 +4,6 @@ import { getSiteMetadata } from "@/config/metadata.config";
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
-import { VERCEL_ENV } from "@/config/env.config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
