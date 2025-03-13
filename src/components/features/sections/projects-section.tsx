@@ -172,7 +172,7 @@ const Modal = ({
             <motion.div
               layoutId={`card-${active.name}`}
               ref={ref}
-              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
+              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl"
             >
               <motion.div layoutId={`image-${active.name}`}>
                 {active.projectUrl && (
@@ -187,7 +187,7 @@ const Modal = ({
                 )}
               </motion.div>
 
-              <div>
+              <div className="overflow-auto">
                 <div className="flex justify-between items-start p-4">
                   <div className="">
                     <motion.h3
