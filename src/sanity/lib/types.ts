@@ -583,7 +583,7 @@ export type PROJECT_BY_SLUG_QUERYResult = {
   keywords: Array<string> | null;
 } | null;
 // Variable: PROJECTS_V2_QUERY
-// Query: *[_type == "project"]{          _id,          name,          projectUrl,          githubUrl,          coverImage { alt, "image": asset->url },          screenshots[] { alt, "image": asset->url },          tagline,          "logo": logo.asset->url,          description,          technologies,        }
+// Query: *[_type == "project"]{          _id,          name,          projectUrl,          githubUrl,          coverImage { alt, "image": asset->url },          screenshots[] { alt, "image": asset->url },          tagline,          "slug": slug.current,          "logo": logo.asset->url,          description,          technologies,        }
 export type PROJECTS_V2_QUERYResult = Array<{
   _id: string;
   name: string | null;
@@ -598,6 +598,7 @@ export type PROJECTS_V2_QUERYResult = Array<{
     image: string | null;
   }> | null;
   tagline: string | null;
+  slug: string | null;
   logo: string | null;
   description: Array<{
     children?: Array<{
@@ -629,6 +630,6 @@ declare module "@sanity/client" {
     "*[_type == \"job\"] | order(startDate desc){\n          _id,\n          name,\n          jobTitle,\n          \"logo\": logo.asset->url,\n          url,\n          description,\n          startDate,\n          endDate,\n        }": JOBS_QUERYResult;
     "*[_type == \"project\"] | order(createdAt desc) {\n          _id, \n          name,\n          \"slug\": slug.current,\n          tagline,\n          \"logo\": logo.asset->url,\n        }": PROJECTS_QUERYResult;
     "*[_type == \"project\" && slug.current == $slug][0]{\n          _id,\n          name,\n          projectUrl,\n          githubUrl,\n          \"logo\": logo.asset->url,\n          coverImage { alt, \"image\": asset->url },\n          screenshots[] { alt, \"image\": asset->url },\n          tagline,\n          description,\n          technologies,\n          keywords,\n        }": PROJECT_BY_SLUG_QUERYResult;
-    "*[_type == \"project\"]{\n          _id,\n          name,\n          projectUrl,\n          githubUrl,\n          coverImage { alt, \"image\": asset->url },\n          screenshots[] { alt, \"image\": asset->url },\n          tagline,\n          \"logo\": logo.asset->url,\n          description,\n          technologies,\n        }": PROJECTS_V2_QUERYResult;
+    "*[_type == \"project\"]{\n          _id,\n          name,\n          projectUrl,\n          githubUrl,\n          coverImage { alt, \"image\": asset->url },\n          screenshots[] { alt, \"image\": asset->url },\n          tagline,\n          \"slug\": slug.current,\n          \"logo\": logo.asset->url,\n          description,\n          technologies,\n        }": PROJECTS_V2_QUERYResult;
   }
 }
