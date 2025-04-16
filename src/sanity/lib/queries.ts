@@ -66,6 +66,7 @@ export const PROJECTS_V2_QUERY = defineQuery(`*[_type == "project"]{
           coverImage { alt, "image": asset->url },
           screenshots[] { alt, "image": asset->url },
           tagline,
+          "slug": slug.current,
           "logo": logo.asset->url,
           description,
           technologies,
