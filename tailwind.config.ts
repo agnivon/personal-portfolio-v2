@@ -10,7 +10,7 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        move: "move 6.4s linear infinite",
+        move: "move 7.2s linear infinite",
       },
       keyframes: {
         move: {
