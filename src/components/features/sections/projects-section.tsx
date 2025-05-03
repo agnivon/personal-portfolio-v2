@@ -175,7 +175,7 @@ const Modal = ({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               ref={ref}
-              className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl"
+              className="w-full max-w-[500px] h-full md:h-fit flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl overflow-hidden"
             >
               <motion.div layoutId={`image-${active.name}`}>
                 {active.projectUrl && (
@@ -190,7 +190,7 @@ const Modal = ({
                 )}
               </motion.div>
 
-              <div className="overflow-auto">
+              <div>
                 <div className="flex justify-between items-start p-4">
                   <div className="">
                     <motion.h3
@@ -235,7 +235,7 @@ const Modal = ({
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 overflow-auto dark:text-neutral-400 [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
+                    className="text-neutral-600 text-xs md:text-sm lg:text-base h-40 md:h-fit pb-10 flex flex-col items-start gap-4 dark:text-neutral-400 overflow-auto [scrollbar-width:none] [-ms-overflow-style:none] [-webkit-overflow-scrolling:touch]"
                   >
                     {active.description && (
                       <PortableText value={active.description} />
