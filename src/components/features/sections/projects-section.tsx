@@ -12,7 +12,6 @@ type Project = PROJECTS_V2_QUERYResult[number];
 
 export default function ProjectsSection({ projects }: { projects: Project[] }) {
   const [active, setActive] = useState<Project | null>(null);
-  const id = useId();
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
@@ -146,7 +145,7 @@ const Modal = ({
           />
         )}
       </AnimatePresence>
-      <AnimatePresence>
+      <>
         {active && typeof active === "object" ? (
           <div className="fixed inset-0  grid place-items-center z-[100]">
             <motion.button
@@ -171,6 +170,10 @@ const Modal = ({
             </motion.button>
             <motion.div
               layoutId={`card-${active.name}`}
+              layout
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
               ref={ref}
               className="w-full max-w-[500px] h-full md:h-fit md:max-h-[90%] flex flex-col bg-white dark:bg-neutral-900 sm:rounded-3xl"
             >
@@ -243,7 +246,7 @@ const Modal = ({
             </motion.div>
           </div>
         ) : null}
-      </AnimatePresence>
+      </>
     </>
   );
 };
