@@ -48,7 +48,7 @@ const AboutAnimatedLine = () => {
     animate(sequence, {
       // @ts-expect-error idk
       repeat: Infinity,
-      repeatDelay: 1,
+      repeatDelay: 0,
     });
   }, []);
 
