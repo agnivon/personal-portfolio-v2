@@ -10,7 +10,7 @@ const GridBackground = ({
   return (
     <div
       className={cn(
-        "min-h-screen w-full rounded-md bg-black/[0.96] bg-grid-white/[0.02] antialiased  relative overflow-hidden",
+        "min-h-screen w-full rounded-md bg-black/[0.96] bg-grid-small-white/[0.1] antialiased  relative overflow-hidden",
         className
       )}
     >
