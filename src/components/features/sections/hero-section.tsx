@@ -1,7 +1,7 @@
 import { Spotlight } from "@/components/ui/spotlight-new";
 import { Vortex } from "@/components/ui/vortex";
 import { PROFILES_QUERYResult } from "@/sanity/lib/types";
-import { SiX } from "@icons-pack/react-simple-icons";
+import { SiBlogger, SiSanity, SiX } from "@icons-pack/react-simple-icons";
 import { BiLogoGithub, BiLogoLinkedin } from "react-icons/bi";
 import GradientHeading from "../typography/gradient-heading";
 import BorderMagicButton from "../ui/border-magic-button";
@@ -113,6 +113,9 @@ const SocialMediaIcon = ({ value }: { value: string }) => {
   }
   if (value === "twitter") {
     return <SiX {...props} className="size-3" />;
+  }
+  if (value === "blog") {
+    return <SiSanity {...props} className="size-3" />;
   }
 
   return <></>;

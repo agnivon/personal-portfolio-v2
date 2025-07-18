@@ -4,8 +4,12 @@ import { CanvasRevealEffect } from "@/components/ui/canvas-reveal-effect";
 import {
   SiChai,
   SiDart,
+  SiDjango,
+  SiDocker,
   SiExpress,
+  SiFastapi,
   SiFirebase,
+  SiFlask,
   SiFlutter,
   SiGit,
   SiJest,
@@ -19,6 +23,7 @@ import {
   SiPostgresql,
   SiPrisma,
   SiRedux,
+  SiSanity,
   SiSpring,
   SiTailwindcss,
   SiTypescript,
@@ -138,6 +143,26 @@ function getSkillIconAndColor(skill: string): [IconType, string] {
 
   if (skill.startsWith("firebase")) {
     return [SiFirebase, "#DD2C00"];
+  }
+
+  if (skill.startsWith("flask")) {
+    return [SiFlask, "#3BABC3"];
+  }
+
+  if (skill.startsWith("django")) {
+    return [SiDjango, "#092E20"];
+  }
+
+  if (skill.startsWith("fastapi")) {
+    return [SiFastapi, "#009688"];
+  }
+
+  if (skill.startsWith("sanity")) {
+    return [SiSanity, "#F03E2F"];
+  }
+
+  if (skill.startsWith("docker")) {
+    return [SiDocker, "#2496ED"];
   }
 
   return [CodeIcon, "#000000"];
