@@ -167,6 +167,12 @@ const profile = {
           type: "url",
           initialValue: "https://twitch.com/",
         },
+        {
+          name: "blog",
+          title: "Blog URL",
+          type: "url",
+          initialValue: "https://blog.agnivon.com/",
+        },
       ],
       options: {
         collapsed: false,

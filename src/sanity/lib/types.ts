@@ -62,6 +62,7 @@ export type Project = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -75,6 +76,7 @@ export type Project = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
@@ -87,6 +89,7 @@ export type Project = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
@@ -136,6 +139,7 @@ export type Job = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     _type: "image";
@@ -161,6 +165,7 @@ export type Profile = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
     };
+    media?: unknown;
     hotspot?: SanityImageHotspot;
     crop?: SanityImageCrop;
     alt?: string;
@@ -278,6 +283,7 @@ export type Profile = {
       _weak?: boolean;
       [internalGroqTypeReferenceTo]?: "sanity.fileAsset";
     };
+    media?: unknown;
     _type: "file";
   };
   socialLinks?: {
@@ -285,6 +291,7 @@ export type Profile = {
     linkedin?: string;
     twitter?: string;
     twitch?: string;
+    blog?: string;
   };
   otherProfileLinks?: Array<{
     name?: string;
@@ -295,6 +302,7 @@ export type Profile = {
         _weak?: boolean;
         [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
       };
+      media?: unknown;
       hotspot?: SanityImageHotspot;
       crop?: SanityImageCrop;
       alt?: string;
@@ -509,6 +517,7 @@ export type PROFILES_QUERYResult = Array<{
     linkedin?: string;
     twitter?: string;
     twitch?: string;
+    blog?: string;
   } | null;
   otherProfileLinks: Array<{
     name: string | null;
