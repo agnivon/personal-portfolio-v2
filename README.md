@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Agnivo Neogi's Portfolio (v2)
 
-## Getting Started
+A premium, modern personal portfolio built with **Next.js 15**, **Sanity.io**, **Tailwind CSS**, and **Framer Motion**. Designed with a focus on high-fidelity aesthetics, smooth animations, and a seamless developer experience.
 
-First, run the development server:
+## ✨ Features
+
+- 🚀 **Next.js 15 (App Router)**: Leveraging the latest features of Next.js for optimal performance and SEO.
+- 🎨 **Premium UI/UX**: Crafted with a curated dark-mode palette, glassmorphism, and high-quality animations.
+- 📝 **Headless CMS**: Powered by **Sanity.io** for real-time content management (Projects, Experience, Profiles, etc.).
+- 💫 **Dynamic Animations**: Utilizes **Framer Motion** and specialized UI components like Spotlight, Vortex, and Background Beams.
+- 🛠️ **Type Safety**: Fully typed with **TypeScript** and Sanity Typegen.
+- 📱 **Responsive Design**: Completely optimized for all screen sizes.
+- 🔍 **SEO Optimized**: Dynamic metadata generation for both home and project pages.
+
+## 🛠️ Tech Stack
+
+- **Frontend**: [Next.js](https://nextjs.org), [React 19](https://react.dev)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com), [Lucide React](https://lucide.dev)
+- **CMS**: [Sanity.io](https://www.sanity.io)
+- **Animation**: [Framer Motion](https://www.framer.com/motion/), [Three.js](https://threejs.org) (via React Three Fiber)
+- **Icons**: [React Icons](https://react-icons.github.io/react-icons/), [Simple Icons](https://simpleicons.org)
+- **Deployment**: [Vercel](https://vercel.com)
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+git clone https://github.com/agnivon/personal-portfolio-v2.git
+cd personal-portfolio-v2
+```
+
+### 2. Install dependencies
+
+```bash
+pnpm install
+```
+
+### 3. Environment Variables
+
+Create a `.env.local` file in the root directory and add your Sanity credentials:
+
+```env
+NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
+NEXT_PUBLIC_SANITY_DATASET=your_dataset
+SANITY_API_READ_TOKEN=your_read_token
+```
+
+### 4. Run the development server
+
+```bash
 pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 📂 Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/app`: Next.js App Router (Site pages and Sanity Studio).
+- `src/components`: Focuses on features, layouts, and reusable UI components.
+- `src/sanity`: Sanity schemas, queries, and client configuration.
+- `src/config`: Site-wide configuration and metadata settings.
+- `public`: Static assets like icons and images.
 
-## Learn More
+## 📝 Content Management
 
-To learn more about Next.js, take a look at the following resources:
+The portfolio content is managed via Sanity Studio. You can access it locally at `/studio` or via the Sanity dashboard.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Profiles**: Personal details, social links, and bio.
+- **Projects**: Portfolio projects with screenshots, tags, and links.
+- **Experience**: Professional work history.
+- **Skills**: Technical skill sets.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📄 License
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is [MIT](./LICENSE) licensed.
