@@ -21,7 +21,7 @@ export async function LandingPage() {
       <ExperienceSection experiences={experiences} />
       {profiles[0]?.skills && <SkillsSection skills={profiles[0]?.skills} />}
       <ProjectsSection projects={projects} />
-      {profiles[0].otherProfileLinks && (
+      {profiles[0]?.otherProfileLinks && (
         <ProfilesSection profiles={profiles[0].otherProfileLinks} />
       )}
       <Footer />

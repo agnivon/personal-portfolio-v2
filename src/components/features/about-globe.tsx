@@ -12,6 +12,15 @@ const AboutGlobe = ({ className }: { className?: string }) => {
 
     if (!canvasRef.current) return;
 
+    // Check WebGL support to avoid crashing when hardware acceleration is disabled
+    const gl =
+      canvasRef.current.getContext("webgl") ||
+      canvasRef.current.getContext("experimental-webgl");
+    if (!gl) {
+      console.warn("WebGL not supported or hardware acceleration disabled. Skipping globe render.");
+      return;
+    }
+
     const globe = createGlobe(canvasRef.current, {
       devicePixelRatio: 2,
       width: 600 * 2,
