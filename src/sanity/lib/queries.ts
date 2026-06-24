@@ -58,7 +58,7 @@ export const PROJECT_BY_SLUG_QUERY =
           keywords,
         }`);
 
-export const PROJECTS_V2_QUERY = defineQuery(`*[_type == "project"]{
+export const PROJECTS_V2_QUERY = defineQuery(`*[_type == "project"] | order(createdAt desc){
           _id,
           name,
           projectUrl,

@@ -1,82 +1,78 @@
-import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 import { PROFILES_QUERYResult } from "@/sanity/lib/types";
 import { PortableText } from "next-sanity";
-import AboutAnimatedLine from "../about-animated-line";
-import AboutGlobe from "../about-globe";
+import Image from "next/image";
 
 const AboutSection = ({
   profile,
 }: {
   profile: PROFILES_QUERYResult[number];
 }) => {
+  const bioBlocks = [profile.altBio1, profile.altBio2, profile.altBio3, profile.altBio4].filter(Boolean);
+
   return (
-    <section className="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center snap-always snap-center mt-20 mb-20 lg:mb-40">
-      <h2 className="scroll-m-20 text-3xl md:text-5xl font-semibold tracking-tight first:mt-0 md:mb-6 text-center">
-        About Me
-      </h2>
-      <BentoGrid className="pt-10">
-        <BentoGridItem
-          title={
-            <span className="md:text-3xl xl:text-4xl">
-              {profile.altBio1?.heading}
-            </span>
-          }
-          description={
-            <span className="md:text-base xl:text-lg">
-              {profile.altBio1?.description && (
-                <PortableText value={profile.altBio1?.description} />
-              )}
-            </span>
-          }
-        />
-        <BentoGridItem
-          title={profile.altBio2?.heading}
-          description={
-            <>
-              {profile.altBio2?.description && (
-                <PortableText value={profile.altBio2?.description} />
-              )}
-            </>
-          }
-          className="col-span-2"
-          header={
-            <div className="flex flex-1 w-full h-full min-h-[6rem] rounded-xl  dark:bg-dot-white/[0.2] bg-dot-black/[0.2]   border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-black">
-              <AboutAnimatedLine />
+    <section id="about" className="max-w-5xl mx-auto px-4 mt-20 mb-20 lg:mb-40 scroll-mt-32">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 relative">
+        
+        {/* Left Column - Sticky Heading */}
+        <div className="md:col-span-4 flex flex-col gap-6">
+          <div className="sticky top-32">
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-zinc-50 font-heading">
+              About Me
+            </h2>
+            {profile.shortBio && (
+              <p className="mt-4 text-zinc-400 text-lg leading-relaxed">
+                {profile.shortBio}
+              </p>
+            )}
+            {profile.profileImage?.image && (
+              <div className="mt-8 rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900/50 hidden md:block">
+                <Image
+                  src={profile.profileImage.image}
+                  alt={profile.profileImage.alt || "Profile"}
+                  width={400}
+                  height={400}
+                  className="w-full h-auto object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                />
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Right Column - Scrollable Content */}
+        <div className="md:col-span-8 flex flex-col gap-12">
+          {profile.fullBio && profile.fullBio.length > 0 && (
+            <div className="prose prose-zinc prose-invert max-w-none prose-p:leading-relaxed prose-p:text-zinc-400 prose-headings:text-zinc-100 prose-a:text-cyan-500 hover:prose-a:text-cyan-400">
+              <PortableText value={profile.fullBio} />
             </div>
-          }
-        />
-        <BentoGridItem
-          title={profile.altBio3?.heading}
-          description={
-            <>
-              {profile.altBio3?.description && (
-                <PortableText value={profile.altBio3?.description} />
-              )}
-            </>
-          }
-          className="col-span-2"
-          header={
-            <div className="flex-1 w-full h-full min-h-[6rem] rounded-xl dark:bg-dot-white/[0.2] bg-dot-black/[0.2] [mask-image:radial-gradient(ellipse_at_center,white,transparent)] border border-transparent dark:border-white/[0.2] bg-neutral-100 dark:bg-black relative">
-              <AboutGlobe />
+          )}
+
+          {bioBlocks.length > 0 && (
+            <div className="flex flex-col gap-8 mt-4">
+              {bioBlocks.map((bio, index) => {
+                if (!bio?.heading && !bio?.description) return null;
+                return (
+                  <div 
+                    key={index} 
+                    className="group relative pl-8 py-2 before:absolute before:inset-y-0 before:left-0 before:w-[2px] before:bg-zinc-800 hover:before:bg-cyan-500 before:transition-colors before:duration-300"
+                  >
+                    {bio.heading && (
+                      <h3 className="text-xl md:text-2xl font-bold text-zinc-100 mb-4 font-heading group-hover:text-cyan-50 transition-colors">
+                        {bio.heading}
+                      </h3>
+                    )}
+                    {bio.description && (
+                      <div className="prose prose-zinc prose-invert max-w-none prose-p:leading-relaxed prose-p:text-zinc-400 prose-a:text-cyan-500">
+                        <PortableText value={bio.description} />
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
-          }
-        />
-        <BentoGridItem
-          title={
-            <span className="md:text-base lg:text-lg">
-              {profile.altBio4?.heading}
-            </span>
-          }
-          description={
-            <span className="lg:text-base">
-              {profile.altBio4?.description && (
-                <PortableText value={profile.altBio4?.description} />
-              )}
-            </span>
-          }
-          className="col-span-1"
-        />
-      </BentoGrid>
+          )}
+        </div>
+
+      </div>
     </section>
   );
 };

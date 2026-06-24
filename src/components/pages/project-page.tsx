@@ -1,5 +1,4 @@
 import { getProjectBySlug } from "@/sanity/lib/queries";
-import GridBackground from "../features/ui/grid-background";
 import {
   Carousel,
   CarouselContent,
@@ -10,7 +9,9 @@ import {
 import { SiGithub } from "@icons-pack/react-simple-icons";
 import { PortableText } from "next-sanity";
 import Image from "next/image";
-import { ExternalLinkIcon } from "lucide-react";
+import { ExternalLinkIcon, ArrowLeft } from "lucide-react";
+import Link from "next/link";
+import BackButton from "../ui/back-button";
 import { redirect } from "next/navigation";
 import { Metadata } from "next";
 import { getProjectMetadata } from "@/config/metadata.config";
@@ -36,72 +37,106 @@ export async function ProjectPage({
   const { name } = await params;
   const project = await getProjectBySlug(name);
   if (!project) redirect("/");
-  return (
-    <GridBackground className="snap-y snap-normal w-full min-h-screen overflow-auto p-20">
-      <div className="max-w-3xl mx-auto">
-        <div className="flex max-sm:flex-col items-start justify-between mb-4">
-          <h1 className="font-bold lg:text-5xl text-3xl lg:leading-tight mb-4">
-            {project?.name}
-          </h1>
 
-          <div className="mt-2.5 flex items-center gap-4">
-            <a
-              href={project?.projectUrl || ""}
-              rel="noreferrer noopener"
-              target="_blank"
-              className="bg-[#1d1d20] text-white hover:border-zinc-700 border border-transparent rounded-md px-4 py-2 flex items-center"
-            >
-              <ExternalLinkIcon className="h-3.5 w-3.5 mr-2" />
-              Visit
-            </a>
+  return (
+    <div className="w-full min-h-screen bg-zinc-950 text-zinc-50 py-12 antialiased">
+      <div className="max-w-4xl mx-auto px-4 md:px-10">
+        
+        {/* Back Link */}
+        <BackButton />
+
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <h1 className="font-bold text-4xl md:text-6xl tracking-tight mb-4 font-heading text-zinc-50">
+              {project?.name}
+            </h1>
+            {project?.tagline && (
+              <p className="text-xl text-zinc-400 max-w-2xl leading-relaxed">
+                {project.tagline}
+              </p>
+            )}
+          </div>
+
+          <div className="flex items-center gap-3 shrink-0">
             {project?.githubUrl && (
               <a
                 href={project.githubUrl}
                 rel="noreferrer noopener"
                 target="_blank"
-                className="bg-[#1d1d20] text-white hover:border-zinc-700 border border-transparent rounded-md px-4 py-2 flex items-center"
+                className="flex items-center justify-center bg-zinc-900 text-zinc-100 hover:bg-zinc-800 border border-zinc-800 hover:border-zinc-700 rounded-full px-5 py-2.5 font-medium transition-colors"
               >
-                <SiGithub className="h-3.5 w-3.5 mr-2" />
-                Github
+                <SiGithub className="w-4 h-4 mr-2" />
+                Source
               </a>
             )}
+            <a
+              href={project?.projectUrl || ""}
+              rel="noreferrer noopener"
+              target="_blank"
+              className="flex items-center justify-center bg-cyan-500 text-zinc-950 hover:bg-cyan-400 rounded-full px-6 py-2.5 font-bold transition-colors"
+            >
+              <ExternalLinkIcon className="w-4 h-4 mr-2" />
+              Visit Site
+            </a>
           </div>
         </div>
 
-        {project?.screenshots && project.screenshots.length > 0 ? (
-          <Carousel className="text-foreground">
-            <CarouselContent>
-              {project.screenshots?.map((sc) => {
-                return (
-                  <CarouselItem key={sc.alt}>
-                    <Image
-                      className="rounded-xl border border-zinc-800"
-                      width={900}
-                      height={460}
-                      src={sc.image || ""}
-                      alt={sc.alt || project.name || ""}
-                    />
-                  </CarouselItem>
-                );
-              })}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
-        ) : (
-          <Image
-            className="rounded-xl border border-zinc-800"
-            width={900}
-            height={460}
-            src={project?.coverImage?.image || ""}
-            alt={project?.coverImage?.alt || ""}
-          />
+        {/* Tech Stack */}
+        {project?.technologies && project.technologies.length > 0 && (
+          <div className="flex flex-wrap gap-2 mb-12">
+            {project.technologies.map((tech) => (
+              <span key={tech} className="px-3 py-1.5 text-sm font-medium bg-zinc-900 border border-zinc-800 text-zinc-300 rounded-md">
+                {tech}
+              </span>
+            ))}
+          </div>
         )}
 
-        <div className="flex flex-col gap-y-6 mt-8 leading-7 text-zinc-400">
+        {/* Media Gallery */}
+        <div className="mb-16">
+          {project?.screenshots && project.screenshots.length > 0 ? (
+            <div className="relative group rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900">
+              <Carousel className="w-full">
+                <CarouselContent>
+                  {project.screenshots?.map((sc) => {
+                    return (
+                      <CarouselItem key={sc.alt}>
+                        <div className="relative aspect-video w-full">
+                          <Image
+                            className="object-cover"
+                            fill
+                            src={sc.image || ""}
+                            alt={sc.alt || project.name || ""}
+                          />
+                        </div>
+                      </CarouselItem>
+                    );
+                  })}
+                </CarouselContent>
+                <div className="absolute inset-x-0 inset-y-1/2 flex justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <CarouselPrevious className="relative static transform-none bg-zinc-950/50 border-zinc-700 text-white hover:bg-zinc-900 hover:text-cyan-400" />
+                  <CarouselNext className="relative static transform-none bg-zinc-950/50 border-zinc-700 text-white hover:bg-zinc-900 hover:text-cyan-400" />
+                </div>
+              </Carousel>
+            </div>
+          ) : project?.coverImage?.image ? (
+            <div className="relative aspect-video w-full rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900">
+              <Image
+                className="object-cover"
+                fill
+                src={project.coverImage.image}
+                alt={project.coverImage.alt || project.name || ""}
+              />
+            </div>
+          ) : null}
+        </div>
+
+        {/* Content */}
+        <div className="prose prose-zinc prose-invert max-w-none prose-p:leading-relaxed prose-p:text-zinc-400 prose-headings:text-zinc-100 prose-a:text-cyan-500 hover:prose-a:text-cyan-400 prose-img:rounded-xl">
           {project?.description && <PortableText value={project.description} />}
         </div>
       </div>
-    </GridBackground>
+    </div>
   );
 }
