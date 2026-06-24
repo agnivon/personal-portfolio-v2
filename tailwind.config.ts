@@ -54,6 +54,8 @@ const config: Config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         move: "move 7.2s linear infinite",
+        "marquee": "marquee var(--duration) linear infinite",
+        "marquee-reverse": "marquee-reverse var(--duration) linear infinite",
       },
       keyframes: {
         "accordion-down": {
@@ -67,6 +69,14 @@ const config: Config = {
         move: {
           "0%": { left: "0" },
           "100%": { left: "100%" },
+        },
+        marquee: {
+          "0%": { transform: "translateX(0%)" },
+          "100%": { transform: "translateX(-100%)" },
+        },
+        "marquee-reverse": {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(0%)" },
         },
       },
     },

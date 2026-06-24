@@ -25,7 +25,7 @@ const AboutSection = ({
               </p>
             )}
             {profile.profileImage?.image && (
-              <div className="mt-8 rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900/50 hidden md:block">
+              <div className="mt-8 mb-8 md:mb-0 rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900/50">
                 <Image
                   src={profile.profileImage.image}
                   alt={profile.profileImage.alt || "Profile"}

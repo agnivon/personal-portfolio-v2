@@ -23,7 +23,7 @@ export default function HeroSection({
   profile: PROFILES_QUERYResult[number];
 }) {
   return (
-    <section className="w-full flex flex-col justify-center min-h-[70vh] antialiased">
+    <section className="w-full flex flex-col justify-center min-h-[70vh] antialiased max-w-5xl mx-auto px-4 md:px-10">
       <div className="max-w-3xl">
         <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-zinc-50 mb-6 leading-tight">
           {profile.headline}
