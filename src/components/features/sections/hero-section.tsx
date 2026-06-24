@@ -1,10 +1,8 @@
-import { Spotlight } from "@/components/ui/spotlight-new";
-import { Vortex } from "@/components/ui/vortex";
 import { PROFILES_QUERYResult } from "@/sanity/lib/types";
-import { SiBlogger, SiSanity, SiX } from "@icons-pack/react-simple-icons";
-import { BiLogoGithub, BiLogoLinkedin } from "react-icons/bi";
-import GradientHeading from "../typography/gradient-heading";
-import BorderMagicButton from "../ui/border-magic-button";
+import { SiX, SiGithub } from "@icons-pack/react-simple-icons";
+import { BiLogoLinkedin } from "react-icons/bi";
+import Link from "next/link";
+import { PenTool } from "lucide-react";
 
 export function getSocialLinks(socialLinks: Record<string, string>) {
   return Object.entries(socialLinks)
@@ -12,113 +10,50 @@ export function getSocialLinks(socialLinks: Record<string, string>) {
     .filter(([_, value]) => Boolean(value));
 }
 
-export const HeroVortex = ({
+const SocialMediaIcon = ({ value, className }: { value: string; className?: string }) => {
+  if (value === "github") return <SiGithub className={className} />;
+  if (value === "linkedin") return <BiLogoLinkedin className={className} />;
+  if (value === "twitter") return <SiX className={className} />;
+  if (value === "blog") return <PenTool className={className} />;
+  return null;
+};
+export default function HeroSection({
   profile,
 }: {
   profile: PROFILES_QUERYResult[number];
-}) => {
+}) {
   return (
-    <section className="w-full rounded-md h-[45rem] overflow-hidden relative">
-      <Vortex
-        backgroundColor="transparent"
-        rangeY={800}
-        particleCount={500}
-        baseHue={200}
-        className="flex items-center flex-col justify-center px-2 md:px-10 py-4 w-full h-full"
-      >
-        <h2 className="text-white text-2xl md:text-6xl font-bold text-center">
+    <section className="w-full flex flex-col justify-center min-h-[70vh] antialiased">
+      <div className="max-w-3xl">
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-zinc-50 mb-6 leading-tight">
           {profile.headline}
-        </h2>
-        <p className="text-white text-sm md:text-2xl max-w-3xl mt-6 text-center">
+        </h1>
+        <p className="text-lg md:text-xl text-zinc-400 mb-8 max-w-2xl leading-relaxed">
           {profile.shortBio}
         </p>
-        <div className="flex flex-col sm:flex-row items-center gap-4 mt-6">
+        
+        <div className="flex flex-wrap items-center gap-4">
+          <Link
+            href="/projects"
+            className="bg-cyan-500 hover:bg-cyan-400 text-zinc-950 px-6 py-3 rounded-full font-semibold transition-colors duration-200"
+          >
+            View Projects
+          </Link>
+
           {getSocialLinks(profile.socialLinks || {}).map(([key, value]) => (
             <a
               key={key}
               href={value}
               target="_blank"
               rel="noreferer noopener"
-              className="flex items-center gap-x-3 mb-5 hover:text-purple-400 duration-300"
+              className="flex items-center justify-center w-12 h-12 rounded-full border border-zinc-800 bg-zinc-900 hover:bg-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-cyan-400 transition-all duration-200"
+              aria-label={key}
             >
-              <BorderMagicButton>
-                {key[0].toUpperCase() + key.toLowerCase().slice(1)}
-              </BorderMagicButton>
+              <SocialMediaIcon value={key} className="w-5 h-5" />
             </a>
           ))}
         </div>
-      </Vortex>
-      <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-black"></div>
-    </section>
-  );
-};
-
-export const HeroSpotlight = ({
-  profile,
-}: {
-  profile: PROFILES_QUERYResult[number];
-}) => {
-  return (
-    <section className="h-screen w-full rounded-md flex flex-col items-center justify-center antialiased relative overflow-hidden snap-always snap-center">
-      <Spotlight />
-      <div className="w-full absolute inset-0 h-screen">
-        {/* <SparklesCore
-          id="tsparticlesfullpage"
-          background="transparent"
-          minSize={0.6}
-          maxSize={1.4}
-          particleDensity={50}
-          className="w-full h-full"
-          particleColor="#FFFFFF"
-        /> */}
-      </div>
-      <div className=" p-4 max-w-7xl  mx-auto relative z-10  w-full pt-20 md:pt-0">
-        <p className="mb-4 font-semibold tracking-widest text-neutral-300 text-center mx-auto uppercase">
-          Agnivo Neogi
-        </p>
-        <GradientHeading>{profile.headline}</GradientHeading>
-        <p className="mt-4 font-normal md:text-xl text-neutral-300/90 max-w-lg xl:max-w-xl text-center mx-auto">
-          {profile.shortBio}
-        </p>
-      </div>
-      <div className="flex flex-col sm:flex-row items-center gap-x-4 mt-6">
-        {getSocialLinks(profile.socialLinks || {}).map(([key, value], id) => (
-          <a
-            key={key}
-            href={value}
-            target="_blank"
-            rel="noreferer noopener"
-            className="flex items-center gap-x-3 mb-5 hover:text-purple-400 duration-300"
-          >
-            <BorderMagicButton>
-              <div className="flex gap-1 items-center">
-                <SocialMediaIcon value={key} />
-                {key[0].toUpperCase() + key.toLowerCase().slice(1)}
-              </div>
-            </BorderMagicButton>
-          </a>
-        ))}
       </div>
     </section>
   );
-};
-
-const SocialMediaIcon = ({ value }: { value: string }) => {
-  const props = { color: "white" };
-  if (value === "github") {
-    return <BiLogoGithub {...props} className="size-4" />;
-  }
-  if (value === "linkedin") {
-    return <BiLogoLinkedin {...props} className="size-4" />;
-  }
-  if (value === "twitter") {
-    return <SiX {...props} className="size-3" />;
-  }
-  if (value === "blog") {
-    return <SiSanity {...props} className="size-3" />;
-  }
-
-  return <></>;
-};
-
-export default HeroSpotlight;
+}

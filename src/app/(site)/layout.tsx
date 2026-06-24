@@ -2,24 +2,22 @@ import RootLayout from "@/components/layouts/root-layout";
 import AppProvider from "@/components/providers";
 import { getSiteMetadata } from "@/config/metadata.config";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Space_Grotesk } from "next/font/google";
 import "../globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const fontInter = Inter({
+  variable: "--font-inter",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const fontSpaceGrotesk = Space_Grotesk({
+  variable: "--font-space-grotesk",
   subsets: ["latin"],
 });
 
 export async function generateMetadata(): Promise<Metadata> {
   return getSiteMetadata();
 }
-
-// export const dynamic = "force-dynamic";
 
 export default function Layout({
   children,
@@ -29,7 +27,7 @@ export default function Layout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased dark:bg-black`}
+        className={`${fontInter.variable} ${fontSpaceGrotesk.variable} antialiased bg-zinc-950 text-zinc-50 min-h-screen selection:bg-cyan-500/30 selection:text-cyan-200`}
       >
         <AppProvider>
           <RootLayout>{children}</RootLayout>
