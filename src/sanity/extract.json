@@ -224,6 +224,13 @@
           "type": "string"
         }
       },
+      "mobile": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
+      },
       "hidden": {
         "type": "objectAttribute",
         "value": {

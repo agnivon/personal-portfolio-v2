@@ -35,16 +35,54 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
 }
 
 const Card = ({ project }: { project: Project }) => {
+  const validScreenshots = project.screenshots?.filter((sc) => !!sc.image) || [];
+
   return (
     <Link href={`/projects/${project.slug}`} className="group block h-full">
       <div className="h-full flex flex-col bg-zinc-900/40 backdrop-blur-md border border-zinc-800 hover:border-cyan-500/50 p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-800/60 shadow-sm hover:shadow-cyan-500/5">
-        <div className="w-full h-40 relative rounded-xl overflow-hidden bg-zinc-800 border border-zinc-800 mb-6 shrink-0">
-          <Image
-            fill
-            src={project.projectUrl ? getMicrolink(project.projectUrl, 400, 300) : project.logo || ""}
-            alt={project.name || ""}
-            className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
-          />
+        <div className="w-full h-40 relative rounded-xl overflow-hidden bg-zinc-800 border border-zinc-800 mb-6 shrink-0 flex items-center justify-center">
+          {project.mobile ? (
+            validScreenshots.length >= 2 ? (
+              <div className="flex justify-center items-center gap-4 h-full w-full p-4 bg-zinc-900/60">
+                <img
+                  src={validScreenshots[0].image!}
+                  alt={validScreenshots[0].alt || project.name || ""}
+                  className="h-full w-auto rounded-lg border border-zinc-800/80 shadow-md"
+                />
+                <img
+                  src={validScreenshots[1].image!}
+                  alt={validScreenshots[1].alt || project.name || ""}
+                  className="h-full w-auto rounded-lg border border-zinc-800/80 shadow-md"
+                />
+              </div>
+            ) : validScreenshots.length === 1 ? (
+              <div className="flex justify-center items-center h-full w-full p-4 bg-zinc-900/60">
+                <img
+                  src={validScreenshots[0].image!}
+                  alt={validScreenshots[0].alt || project.name || ""}
+                  className="h-full w-auto rounded-lg border border-zinc-800/80 shadow-md"
+                />
+              </div>
+            ) : (
+              <div className="flex justify-center items-center h-full w-full p-6 bg-zinc-900/60">
+                <div className="relative h-16 w-16">
+                  <Image
+                    fill
+                    src={project.logo || ""}
+                    alt={project.name || ""}
+                    className="object-contain"
+                  />
+                </div>
+              </div>
+            )
+          ) : (
+            <Image
+              fill
+              src={project.projectUrl ? getMicrolink(project.projectUrl, 400, 300) : project.logo || ""}
+              alt={project.name || ""}
+              className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+            />
+          )}
         </div>
         <div className="flex-grow flex flex-col">
           <h3 className="font-bold text-zinc-100 group-hover:text-cyan-50 transition-colors font-heading text-xl mb-2">

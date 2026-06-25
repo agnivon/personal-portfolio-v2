@@ -39,6 +39,7 @@ export const PROJECTS_QUERY =
           _id, 
           name,
           order,
+          mobile,
           "slug": slug.current,
           tagline,
           "logo": logo.asset->url,
@@ -48,6 +49,7 @@ export const PROJECT_BY_SLUG_QUERY =
   defineQuery(`*[_type == "project" && slug.current == $slug][0]{
           _id,
           name,
+          mobile,
           projectUrl,
           githubUrl,
           "logo": logo.asset->url,
@@ -63,6 +65,7 @@ export const PROJECTS_V2_QUERY = defineQuery(`*[_type == "project" && hidden != 
           _id,
           name,
           order,
+          mobile,
           projectUrl,
           githubUrl,
           coverImage { alt, "image": asset->url },
