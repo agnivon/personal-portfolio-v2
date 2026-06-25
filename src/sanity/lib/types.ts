@@ -52,6 +52,8 @@ export type Project = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  hidden?: boolean;
+  order?: number;
   name?: string;
   tagline?: string;
   slug?: Slug;
@@ -130,6 +132,7 @@ export type Job = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
+  hidden?: boolean;
   name?: string;
   jobTitle?: string;
   logo?: {
@@ -533,7 +536,7 @@ export type PROFILES_QUERYResult = Array<{
 // Query: count(*[_type == "profile"])
 export type PROFILE_COUNT_QUERYResult = number;
 // Variable: JOBS_QUERY
-// Query: *[_type == "job"] | order(startDate desc){          _id,          name,          jobTitle,          "logo": logo.asset->url,          url,          description,          startDate,          endDate,        }
+// Query: *[_type == "job" && hidden != true] | order(startDate desc){          _id,          name,          jobTitle,          "logo": logo.asset->url,          url,          description,          startDate,          endDate,        }
 export type JOBS_QUERYResult = Array<{
   _id: string;
   name: string | null;
@@ -545,10 +548,11 @@ export type JOBS_QUERYResult = Array<{
   endDate: string | null;
 }>;
 // Variable: PROJECTS_QUERY
-// Query: *[_type == "project"] | order(createdAt desc) {          _id,           name,          "slug": slug.current,          tagline,          "logo": logo.asset->url,        }
+// Query: *[_type == "project" && hidden != true] | order(createdAt desc) {          _id,           name,          order,          "slug": slug.current,          tagline,          "logo": logo.asset->url,        }
 export type PROJECTS_QUERYResult = Array<{
   _id: string;
   name: string | null;
+  order: number | null;
   slug: string | null;
   tagline: string | null;
   logo: string | null;
@@ -592,10 +596,11 @@ export type PROJECT_BY_SLUG_QUERYResult = {
   keywords: Array<string> | null;
 } | null;
 // Variable: PROJECTS_V2_QUERY
-// Query: *[_type == "project"] | order(createdAt desc){          _id,          name,          projectUrl,          githubUrl,          coverImage { alt, "image": asset->url },          screenshots[] { alt, "image": asset->url },          tagline,          "slug": slug.current,          "logo": logo.asset->url,          description,          technologies,        }
+// Query: *[_type == "project" && hidden != true] | order(createdAt desc){          _id,          name,          order,          projectUrl,          githubUrl,          coverImage { alt, "image": asset->url },          screenshots[] { alt, "image": asset->url },          tagline,          "slug": slug.current,          "logo": logo.asset->url,          description,          technologies,        }
 export type PROJECTS_V2_QUERYResult = Array<{
   _id: string;
   name: string | null;
+  order: number | null;
   projectUrl: string | null;
   githubUrl: string | null;
   coverImage: {
@@ -636,9 +641,9 @@ declare module "@sanity/client" {
   interface SanityQueries {
     "*[_type == \"profile\"]{\n            _id,\n            fullName,\n            headline,\n            profileImage { alt, \"image\": asset->url },\n            shortBio,\n            location,\n            fullBio,\n            altBio1,\n            altBio2,\n            altBio3,\n            altBio4,\n            email,\n            \"resumeURL\": resumeURL.asset->url,\n            socialLinks,\n            otherProfileLinks[] { name, link, \"logo\": logo { alt, \"image\": asset->url } },\n            skills\n          }": PROFILES_QUERYResult;
     "count(*[_type == \"profile\"])": PROFILE_COUNT_QUERYResult;
-    "*[_type == \"job\"] | order(startDate desc){\n          _id,\n          name,\n          jobTitle,\n          \"logo\": logo.asset->url,\n          url,\n          description,\n          startDate,\n          endDate,\n        }": JOBS_QUERYResult;
-    "*[_type == \"project\"] | order(createdAt desc) {\n          _id, \n          name,\n          \"slug\": slug.current,\n          tagline,\n          \"logo\": logo.asset->url,\n        }": PROJECTS_QUERYResult;
+    "*[_type == \"job\" && hidden != true] | order(startDate desc){\n          _id,\n          name,\n          jobTitle,\n          \"logo\": logo.asset->url,\n          url,\n          description,\n          startDate,\n          endDate,\n        }": JOBS_QUERYResult;
+    "*[_type == \"project\" && hidden != true] | order(createdAt desc) {\n          _id, \n          name,\n          order,\n          \"slug\": slug.current,\n          tagline,\n          \"logo\": logo.asset->url,\n        }": PROJECTS_QUERYResult;
     "*[_type == \"project\" && slug.current == $slug][0]{\n          _id,\n          name,\n          projectUrl,\n          githubUrl,\n          \"logo\": logo.asset->url,\n          coverImage { alt, \"image\": asset->url },\n          screenshots[] { alt, \"image\": asset->url },\n          tagline,\n          description,\n          technologies,\n          keywords,\n        }": PROJECT_BY_SLUG_QUERYResult;
-    "*[_type == \"project\"] | order(createdAt desc){\n          _id,\n          name,\n          projectUrl,\n          githubUrl,\n          coverImage { alt, \"image\": asset->url },\n          screenshots[] { alt, \"image\": asset->url },\n          tagline,\n          \"slug\": slug.current,\n          \"logo\": logo.asset->url,\n          description,\n          technologies,\n        }": PROJECTS_V2_QUERYResult;
+    "*[_type == \"project\" && hidden != true] | order(createdAt desc){\n          _id,\n          name,\n          order,\n          projectUrl,\n          githubUrl,\n          coverImage { alt, \"image\": asset->url },\n          screenshots[] { alt, \"image\": asset->url },\n          tagline,\n          \"slug\": slug.current,\n          \"logo\": logo.asset->url,\n          description,\n          technologies,\n        }": PROJECTS_V2_QUERYResult;
   }
 }

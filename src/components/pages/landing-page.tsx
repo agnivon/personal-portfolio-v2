@@ -9,7 +9,7 @@ import Footer from "../features/footer";
 export async function LandingPage() {
   const profiles = await getProfiles();
   const experiences = await getJobs();
-  const projects = await getProjects();
+  const projects = (await getProjects()).sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 
   return (
     <div className="flex flex-col gap-24">

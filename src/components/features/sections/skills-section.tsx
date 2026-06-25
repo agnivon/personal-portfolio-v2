@@ -1,29 +1,62 @@
 import {
   SiChai,
+  SiChaiHex,
   SiDart,
+  SiDartHex,
   SiDjango,
+  SiDjangoHex,
   SiDocker,
+  SiDockerHex,
   SiExpress,
+  SiExpressHex,
   SiFastapi,
+  SiFastapiHex,
   SiFirebase,
+  SiFirebaseHex,
   SiFlask,
+  SiFlaskHex,
   SiFlutter,
+  SiFlutterHex,
   SiGit,
+  SiGitHex,
   SiJest,
+  SiJestHex,
   SiMocha,
+  SiMochaHex,
   SiMongodb,
+  SiMongodbHex,
   SiMongoose,
+  SiMongooseHex,
   SiMysql,
+  SiMysqlHex,
   SiNextdotjs,
+  SiNextdotjsHex,
   SiNodedotjs,
+  SiNodedotjsHex,
   SiPassport,
+  SiPassportHex,
   SiPostgresql,
+  SiPostgresqlHex,
   SiPrisma,
+  SiPrismaHex,
   SiRedux,
+  SiReduxHex,
   SiSanity,
+  SiSanityHex,
   SiSpring,
+  SiSpringHex,
   SiTailwindcss,
+  SiTailwindcssHex,
   SiTypescript,
+  SiTypescriptHex,
+  SiGooglegemini,
+  SiGooglegeminiHex,
+  SiLangchain,
+  SiLangchainHex,
+  SiLanggraph,
+  SiLanggraphHex,
+  SiConvex,
+  SiConvexHex
 } from "@icons-pack/react-simple-icons";
 import { CodeIcon } from "lucide-react";
 import { IconType } from "react-icons/lib";
@@ -39,9 +72,8 @@ const Marquee = ({
 }) => {
   const content = (
     <div
-      className={`flex shrink-0 justify-around gap-4 md:gap-6 px-2 md:px-3 py-2 ${
-        reverse ? "animate-marquee-reverse" : "animate-marquee"
-      }`}
+      className={`flex shrink-0 justify-around gap-4 md:gap-6 px-2 md:px-3 py-2 ${reverse ? "animate-marquee-reverse" : "animate-marquee"
+        }`}
       style={{ "--duration": duration } as React.CSSProperties}
     >
       {items.map((e) => {
@@ -94,12 +126,12 @@ const SkillsSection = ({ skills }: { skills: string[] }) => {
           Expertise
         </h2>
       </div>
-      
+
       {/* Mobile/Small Screens: 4 rows */}
       <div className="relative flex md:hidden flex-col gap-4 overflow-hidden py-4 w-full">
         <div className="absolute inset-y-0 left-0 w-1/6 bg-gradient-to-r from-[#09090b] to-transparent z-10 pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-1/6 bg-gradient-to-l from-[#09090b] to-transparent z-10 pointer-events-none" />
-        
+
         {row1_4.length > 0 && <Marquee items={row1_4} duration="40s" />}
         {row2_4.length > 0 && <Marquee items={row2_4} duration="35s" reverse />}
         {row3_4.length > 0 && <Marquee items={row3_4} duration="45s" />}
@@ -110,7 +142,7 @@ const SkillsSection = ({ skills }: { skills: string[] }) => {
       <div className="relative hidden md:flex flex-col gap-6 overflow-hidden py-4 w-full">
         <div className="absolute inset-y-0 left-0 w-1/4 bg-gradient-to-r from-[#09090b] to-transparent z-10 pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-1/4 bg-gradient-to-l from-[#09090b] to-transparent z-10 pointer-events-none" />
-        
+
         {row1_3.length > 0 && <Marquee items={row1_3} duration="40s" />}
         {row2_3.length > 0 && <Marquee items={row2_3} duration="35s" reverse />}
         {row3_3.length > 0 && <Marquee items={row3_3} duration="45s" />}
@@ -122,31 +154,35 @@ const SkillsSection = ({ skills }: { skills: string[] }) => {
 export default SkillsSection;
 
 function getSkillIconAndColor(skill: string): [IconType, string] {
-  if (skill.startsWith("next")) return [SiNextdotjs, "#000000"];
-  if (skill.startsWith("typescript")) return [SiTypescript, "#3178C6"];
-  if (skill.startsWith("tailwind")) return [SiTailwindcss, "#06B6D4"];
-  if (skill.startsWith("redux")) return [SiRedux, "#764ABC"];
-  if (skill.startsWith("mongodb")) return [SiMongodb, "#47A248"];
-  if (skill.startsWith("mysql")) return [SiMysql, "#4479A1"];
-  if (skill.startsWith("postgresql")) return [SiPostgresql, "#4169E1"];
-  if (skill.startsWith("node")) return [SiNodedotjs, "#5FA04E"];
-  if (skill.startsWith("express")) return [SiExpress, "#000000"];
-  if (skill.startsWith("spring")) return [SiSpring, "#6DB33F"];
-  if (skill.startsWith("prisma")) return [SiPrisma, "#2D3748"];
-  if (skill.startsWith("passport")) return [SiPassport, "#34E27A"];
-  if (skill.startsWith("mongoose")) return [SiMongoose, "#47A248"];
-  if (skill.startsWith("mocha")) return [SiMocha, "#8D6748"];
-  if (skill.startsWith("chai")) return [SiChai, "#A30701"];
-  if (skill.startsWith("jest")) return [SiJest, "#C21325"];
-  if (skill.startsWith("git")) return [SiGit, "#F05032"];
-  if (skill.startsWith("flutter")) return [SiFlutter, "#02569B"];
-  if (skill.startsWith("dart")) return [SiDart, "#0175C2"];
-  if (skill.startsWith("firebase")) return [SiFirebase, "#DD2C00"];
-  if (skill.startsWith("flask")) return [SiFlask, "#3BABC3"];
-  if (skill.startsWith("django")) return [SiDjango, "#092E20"];
-  if (skill.startsWith("fastapi")) return [SiFastapi, "#009688"];
-  if (skill.startsWith("sanity")) return [SiSanity, "#F03E2F"];
-  if (skill.startsWith("docker")) return [SiDocker, "#2496ED"];
+  if (skill.startsWith("next")) return [SiNextdotjs, SiNextdotjsHex];
+  if (skill.startsWith("typescript")) return [SiTypescript, SiTypescriptHex];
+  if (skill.startsWith("tailwind")) return [SiTailwindcss, SiTailwindcssHex];
+  if (skill.startsWith("redux")) return [SiRedux, SiReduxHex];
+  if (skill.startsWith("mongodb")) return [SiMongodb, SiMongodbHex];
+  if (skill.startsWith("mysql")) return [SiMysql, SiMysqlHex];
+  if (skill.startsWith("postgresql")) return [SiPostgresql, SiPostgresqlHex];
+  if (skill.startsWith("node")) return [SiNodedotjs, SiNodedotjsHex];
+  if (skill.startsWith("express")) return [SiExpress, SiExpressHex];
+  if (skill.startsWith("spring")) return [SiSpring, SiSpringHex];
+  if (skill.startsWith("prisma")) return [SiPrisma, SiPrismaHex];
+  if (skill.startsWith("passport")) return [SiPassport, SiPassportHex];
+  if (skill.startsWith("mongoose")) return [SiMongoose, SiMongooseHex];
+  if (skill.startsWith("mocha")) return [SiMocha, SiMochaHex];
+  if (skill.startsWith("chai")) return [SiChai, SiChaiHex];
+  if (skill.startsWith("jest")) return [SiJest, SiJestHex];
+  if (skill.startsWith("git")) return [SiGit, SiGitHex];
+  if (skill.startsWith("flutter")) return [SiFlutter, SiFlutterHex];
+  if (skill.startsWith("dart")) return [SiDart, SiDartHex];
+  if (skill.startsWith("firebase")) return [SiFirebase, SiFirebaseHex];
+  if (skill.startsWith("flask")) return [SiFlask, SiFlaskHex];
+  if (skill.startsWith("django")) return [SiDjango, SiDjangoHex];
+  if (skill.startsWith("fastapi")) return [SiFastapi, SiFastapiHex];
+  if (skill.startsWith("sanity")) return [SiSanity, SiSanityHex];
+  if (skill.startsWith("docker")) return [SiDocker, SiDockerHex];
+  if (skill.startsWith("gemini")) return [SiGooglegemini, SiGooglegeminiHex];
+  if (skill.startsWith("langchain")) return [SiLangchain, SiLangchainHex];
+  if (skill.startsWith("langgraph")) return [SiLanggraph, SiLanggraphHex];
+  if (skill.startsWith("convex")) return [SiConvex, SiConvexHex];
 
   return [CodeIcon, "#888888"];
 }

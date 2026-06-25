@@ -1,5 +1,5 @@
 import { defineQuery } from "next-sanity";
-import { sanityFetch } from "./client";
+import { sanityFetch } from "./live";
 
 export const PROFILES_QUERY = defineQuery(`*[_type == "profile"]{
             _id,
@@ -23,7 +23,7 @@ export const PROFILES_QUERY = defineQuery(`*[_type == "profile"]{
 export const PROFILE_COUNT_QUERY = defineQuery(`count(*[_type == "profile"])`);
 
 export const JOBS_QUERY =
-  defineQuery(`*[_type == "job"] | order(startDate desc){
+  defineQuery(`*[_type == "job" && hidden != true] | order(startDate desc){
           _id,
           name,
           jobTitle,
@@ -35,9 +35,10 @@ export const JOBS_QUERY =
         }`);
 
 export const PROJECTS_QUERY =
-  defineQuery(`*[_type == "project"] | order(createdAt desc) {
+  defineQuery(`*[_type == "project" && hidden != true] | order(createdAt desc) {
           _id, 
           name,
+          order,
           "slug": slug.current,
           tagline,
           "logo": logo.asset->url,
@@ -58,9 +59,10 @@ export const PROJECT_BY_SLUG_QUERY =
           keywords,
         }`);
 
-export const PROJECTS_V2_QUERY = defineQuery(`*[_type == "project"] | order(createdAt desc){
+export const PROJECTS_V2_QUERY = defineQuery(`*[_type == "project" && hidden != true] | order(createdAt desc){
           _id,
           name,
+          order,
           projectUrl,
           githubUrl,
           coverImage { alt, "image": asset->url },
@@ -73,34 +75,35 @@ export const PROJECTS_V2_QUERY = defineQuery(`*[_type == "project"] | order(crea
         }`);
 
 export async function getProfiles() {
-  return sanityFetch({
+  const { data } = await sanityFetch({
     query: PROFILES_QUERY,
-    tags: ["profile"],
   });
+  return data;
 }
 
 export async function getProfileCount() {
-  return sanityFetch({ query: PROFILE_COUNT_QUERY, tags: ["profile"] });
+  const { data } = await sanityFetch({ query: PROFILE_COUNT_QUERY });
+  return data;
 }
 
 export async function getJobs() {
-  return sanityFetch({
+  const { data } = await sanityFetch({
     query: JOBS_QUERY,
-    tags: ["job"],
   });
+  return data;
 }
 
 export async function getProjects() {
-  return sanityFetch({
+  const { data } = await sanityFetch({
     query: PROJECTS_V2_QUERY,
-    tags: ["project"],
   });
+  return data;
 }
 
 export async function getProjectBySlug(slug: string) {
-  return sanityFetch({
+  const { data } = await sanityFetch({
     query: PROJECT_BY_SLUG_QUERY,
     params: { slug },
-    tags: ["project"],
   });
+  return data;
 }
