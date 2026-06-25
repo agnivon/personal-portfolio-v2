@@ -9,6 +9,13 @@ const project = {
   icon: BiPackage,
   fields: [
     defineField({
+      name: "mobile",
+      title: "Mobile",
+      type: "boolean",
+      description: "Is this a mobile app?",
+      initialValue: false,
+    }),
+    defineField({
       name: "hidden",
       title: "Hidden",
       type: "boolean",

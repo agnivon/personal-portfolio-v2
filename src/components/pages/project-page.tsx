@@ -96,32 +96,61 @@ export async function ProjectPage({
         {/* Media Gallery */}
         <div className="mb-16">
           {project?.screenshots && project.screenshots.length > 0 ? (
-            <div className="relative group rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900">
-              <Carousel className="w-full">
-                <CarouselContent>
-                  {project.screenshots?.map((sc) => {
-                    return (
-                      <CarouselItem key={sc.alt}>
-                        <div className="relative aspect-video w-full">
-                          <Image
-                            className="object-cover"
-                            fill
+            project.mobile ? (
+              <div className="relative group px-12">
+                <Carousel
+                  className="w-full"
+                  opts={{
+                    align: "start",
+                  }}
+                >
+                  <CarouselContent className="-ml-4">
+                    {project.screenshots.map((sc) => (
+                      <CarouselItem key={sc.alt} className="pl-4 basis-full sm:basis-1/2 md:basis-1/3">
+                        <div className="relative aspect-[9/16] w-full flex items-center justify-center">
+                          <img
                             src={sc.image || ""}
                             alt={sc.alt || project.name || ""}
+                            className="h-full w-auto rounded-3xl border border-zinc-800/80 shadow-lg"
                           />
                         </div>
                       </CarouselItem>
-                    );
-                  })}
-                </CarouselContent>
-                <div className="absolute inset-x-0 inset-y-1/2 flex justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <CarouselPrevious className="relative static transform-none bg-zinc-950/50 border-zinc-700 text-white hover:bg-zinc-900 hover:text-cyan-400" />
-                  <CarouselNext className="relative static transform-none bg-zinc-950/50 border-zinc-700 text-white hover:bg-zinc-900 hover:text-cyan-400" />
-                </div>
-              </Carousel>
-            </div>
+                    ))}
+                  </CarouselContent>
+                  <div className="absolute inset-x-2 top-1/2 -translate-y-1/2 flex justify-between opacity-0 group-hover:opacity-100 transition-opacity z-10 pointer-events-none">
+                    <CarouselPrevious className="relative static transform-none bg-zinc-950/80 border-zinc-700 text-white hover:bg-zinc-900 hover:text-cyan-400 pointer-events-auto" />
+                    <CarouselNext className="relative static transform-none bg-zinc-950/80 border-zinc-700 text-white hover:bg-zinc-900 hover:text-cyan-400 pointer-events-auto" />
+                  </div>
+                </Carousel>
+              </div>
+            ) : (
+              <div className="relative group rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900">
+                <Carousel className="w-full">
+                  <CarouselContent>
+                    {project.screenshots?.map((sc) => {
+                      return (
+                        <CarouselItem key={sc.alt}>
+                          <div className="relative aspect-video w-full">
+                            <Image
+                              className="object-cover"
+                              fill
+                              src={sc.image || ""}
+                              alt={sc.alt || project.name || ""}
+                            />
+                          </div>
+                        </CarouselItem>
+                      );
+                    })}
+                  </CarouselContent>
+                  <div className="absolute inset-x-0 inset-y-1/2 flex justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <CarouselPrevious className="relative static transform-none bg-zinc-950/50 border-zinc-700 text-white hover:bg-zinc-900 hover:text-cyan-400" />
+                    <CarouselNext className="relative static transform-none bg-zinc-950/50 border-zinc-700 text-white hover:bg-zinc-900 hover:text-cyan-400" />
+                  </div>
+                </Carousel>
+              </div>
+            )
           ) : project?.coverImage?.image ? (
-            <div className="relative aspect-video w-full rounded-2xl overflow-hidden border border-zinc-800 bg-zinc-900">
+            <div className="relative aspect-video w-full rounded-3xl overflow-hidden border border-zinc-800 bg-zinc-900">
               <Image
                 className="object-cover"
                 fill
