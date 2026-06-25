@@ -224,6 +224,20 @@
           "type": "string"
         }
       },
+      "hidden": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
+      },
+      "order": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "number"
+        },
+        "optional": true
+      },
       "name": {
         "type": "objectAttribute",
         "value": {
@@ -760,6 +774,13 @@
         "value": {
           "type": "string"
         }
+      },
+      "hidden": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
       },
       "name": {
         "type": "objectAttribute",

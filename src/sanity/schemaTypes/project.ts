@@ -9,6 +9,20 @@ const project = {
   icon: BiPackage,
   fields: [
     defineField({
+      name: "hidden",
+      title: "Hidden",
+      type: "boolean",
+      description: "Hide this project from the website",
+      initialValue: false,
+    }),
+    defineField({
+      name: "order",
+      title: "Order",
+      type: "number",
+      description: "Order to display the project",
+      initialValue: 0,
+    }),
+    defineField({
       name: "name",
       title: "Name",
       type: "string",

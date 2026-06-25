@@ -8,6 +8,13 @@ const job = {
   icon: BiBriefcase,
   fields: [
     defineField({
+      name: "hidden",
+      title: "Hidden",
+      type: "boolean",
+      description: "Hide this job from the website",
+      initialValue: false,
+    }),
+    defineField({
       name: "name",
       title: "Company Name",
       type: "string",

@@ -32,26 +32,28 @@ export default function HeroSection({
           {profile.shortBio}
         </p>
         
-        <div className="flex flex-wrap items-center gap-4">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-4">
           <Link
             href="/projects"
-            className="bg-cyan-500 hover:bg-cyan-400 text-zinc-950 px-6 py-3 rounded-full font-semibold transition-colors duration-200"
+            className="w-fit bg-cyan-500 hover:bg-cyan-400 text-zinc-950 px-6 py-3 rounded-full font-semibold transition-colors duration-200"
           >
             View Projects
           </Link>
 
-          {getSocialLinks(profile.socialLinks || {}).map(([key, value]) => (
-            <a
-              key={key}
-              href={value}
-              target="_blank"
-              rel="noreferer noopener"
-              className="flex items-center justify-center w-12 h-12 rounded-full border border-zinc-800 bg-zinc-900 hover:bg-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-cyan-400 transition-all duration-200"
-              aria-label={key}
-            >
-              <SocialMediaIcon value={key} className="w-5 h-5" />
-            </a>
-          ))}
+          <div className="flex flex-wrap items-center gap-4">
+            {getSocialLinks(profile.socialLinks || {}).map(([key, value]) => (
+              <a
+                key={key}
+                href={value}
+                target="_blank"
+                rel="noreferer noopener"
+                className="flex items-center justify-center w-12 h-12 rounded-full border border-zinc-800 bg-zinc-900 hover:bg-zinc-800 hover:border-zinc-700 text-zinc-300 hover:text-cyan-400 transition-all duration-200"
+                aria-label={key}
+              >
+                <SocialMediaIcon value={key} className="w-5 h-5" />
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>

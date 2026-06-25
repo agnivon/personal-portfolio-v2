@@ -4,7 +4,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 export default async function ProjectsPage() {
-  const projects = await getProjects();
+  const projects = (await getProjects()).sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
 
   return (
     <div className="w-full min-h-screen bg-zinc-950 text-zinc-50 py-20 antialiased">

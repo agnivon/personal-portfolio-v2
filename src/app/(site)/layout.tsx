@@ -1,5 +1,6 @@
 import RootLayout from "@/components/layouts/root-layout";
 import AppProvider from "@/components/providers";
+import { SanityLive } from "@/sanity/lib/live";
 import { getSiteMetadata } from "@/config/metadata.config";
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
@@ -31,6 +32,7 @@ export default function Layout({
       >
         <AppProvider>
           <RootLayout>{children}</RootLayout>
+          <SanityLive />
         </AppProvider>
       </body>
     </html>
