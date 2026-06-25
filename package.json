@@ -40,7 +40,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
-    "sanity": "^3.87.1",
+    "sanity": "^3.99.0",
     "simplex-noise": "^4.0.3",
     "styled-components": "^6.1.17",
     "tailwind-merge": "^3.2.0",
