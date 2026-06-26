@@ -153,41 +153,68 @@ const SkillsSection = ({ skills }: { skills: string[] }) => {
 
 export default SkillsSection;
 
-function getSkillIconAndColor(skill: string): [IconType, string] {
-  if (skill.startsWith("next")) return [SiNextdotjs, SiNextdotjsHex];
-  if (skill.startsWith("typescript")) return [SiTypescript, SiTypescriptHex];
-  if (skill.startsWith("tailwind")) return [SiTailwindcss, SiTailwindcssHex];
-  if (skill.startsWith("redux")) return [SiRedux, SiReduxHex];
-  if (skill.startsWith("mongodb")) return [SiMongodb, SiMongodbHex];
-  if (skill.startsWith("mysql")) return [SiMysql, SiMysqlHex];
-  if (skill.startsWith("postgresql")) return [SiPostgresql, SiPostgresqlHex];
-  if (skill.startsWith("node")) return [SiNodedotjs, SiNodedotjsHex];
-  if (skill.startsWith("express")) return [SiExpress, SiExpressHex];
-  if (skill.startsWith("spring")) return [SiSpring, SiSpringHex];
-  if (skill.startsWith("prisma")) return [SiPrisma, SiPrismaHex];
-  if (skill.startsWith("passport")) return [SiPassport, SiPassportHex];
-  if (skill.startsWith("mongoose")) return [SiMongoose, SiMongooseHex];
-  if (skill.startsWith("mocha")) return [SiMocha, SiMochaHex];
-  if (skill.startsWith("chai")) return [SiChai, SiChaiHex];
-  if (skill.startsWith("jest")) return [SiJest, SiJestHex];
-  if (skill.startsWith("git")) return [SiGit, SiGitHex];
-  if (skill.startsWith("flutter")) return [SiFlutter, SiFlutterHex];
-  if (skill.startsWith("dart")) return [SiDart, SiDartHex];
-  if (skill.startsWith("firebase")) return [SiFirebase, SiFirebaseHex];
-  if (skill.startsWith("flask")) return [SiFlask, SiFlaskHex];
-  if (skill.startsWith("django")) return [SiDjango, SiDjangoHex];
-  if (skill.startsWith("fastapi")) return [SiFastapi, SiFastapiHex];
-  if (skill.startsWith("sanity")) return [SiSanity, SiSanityHex];
-  if (skill.startsWith("docker")) return [SiDocker, SiDockerHex];
-  if (skill.startsWith("gemini")) return [SiGooglegemini, SiGooglegeminiHex];
-  if (skill.startsWith("langchain")) return [SiLangchain, SiLangchainHex];
-  if (skill.startsWith("langgraph")) return [SiLanggraph, SiLanggraphHex];
-  if (skill.startsWith("convex")) return [SiConvex, SiConvexHex];
-
-  return [CodeIcon, "#888888"];
+function adjustColorForDarkMode(hexColor: string): string {
+  if (hexColor.startsWith("#")) {
+    const hex = hexColor.substring(1);
+    if (hex.length === 6) {
+      const r = parseInt(hex.substring(0, 2), 16);
+      const g = parseInt(hex.substring(2, 4), 16);
+      const b = parseInt(hex.substring(4, 6), 16);
+      const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+      
+      if (luminance < 40) {
+        if (luminance < 10) return "#fafafa"; // Return light zinc-50 for near-black
+        const factor = 2.5;
+        const newR = Math.min(255, Math.round(r * factor));
+        const newG = Math.min(255, Math.round(g * factor));
+        const newB = Math.min(255, Math.round(b * factor));
+        return `#${newR.toString(16).padStart(2, "0")}${newG.toString(16).padStart(2, "0")}${newB.toString(16).padStart(2, "0")}`;
+      }
+    }
+  }
+  return hexColor;
 }
 
-const SkillIcon = ({ skill, color }: { skill: string, color: string }) => {
+export function getSkillIconAndColor(skill: string): [IconType, string] {
+  const getBase = (): [IconType, string] => {
+    if (skill.startsWith("next")) return [SiNextdotjs, SiNextdotjsHex];
+    if (skill.startsWith("typescript")) return [SiTypescript, SiTypescriptHex];
+    if (skill.startsWith("tailwind")) return [SiTailwindcss, SiTailwindcssHex];
+    if (skill.startsWith("redux")) return [SiRedux, SiReduxHex];
+    if (skill.startsWith("mongodb")) return [SiMongodb, SiMongodbHex];
+    if (skill.startsWith("mysql")) return [SiMysql, SiMysqlHex];
+    if (skill.startsWith("postgresql")) return [SiPostgresql, SiPostgresqlHex];
+    if (skill.startsWith("node")) return [SiNodedotjs, SiNodedotjsHex];
+    if (skill.startsWith("express")) return [SiExpress, SiExpressHex];
+    if (skill.startsWith("spring")) return [SiSpring, SiSpringHex];
+    if (skill.startsWith("prisma")) return [SiPrisma, SiPrismaHex];
+    if (skill.startsWith("passport")) return [SiPassport, SiPassportHex];
+    if (skill.startsWith("mongoose")) return [SiMongoose, SiMongooseHex];
+    if (skill.startsWith("mocha")) return [SiMocha, SiMochaHex];
+    if (skill.startsWith("chai")) return [SiChai, SiChaiHex];
+    if (skill.startsWith("jest")) return [SiJest, SiJestHex];
+    if (skill.startsWith("git")) return [SiGit, SiGitHex];
+    if (skill.startsWith("flutter")) return [SiFlutter, SiFlutterHex];
+    if (skill.startsWith("dart")) return [SiDart, SiDartHex];
+    if (skill.startsWith("firebase")) return [SiFirebase, SiFirebaseHex];
+    if (skill.startsWith("flask")) return [SiFlask, SiFlaskHex];
+    if (skill.startsWith("django")) return [SiDjango, SiDjangoHex];
+    if (skill.startsWith("fastapi")) return [SiFastapi, SiFastapiHex];
+    if (skill.startsWith("sanity")) return [SiSanity, SiSanityHex];
+    if (skill.startsWith("docker")) return [SiDocker, SiDockerHex];
+    if (skill.startsWith("gemini")) return [SiGooglegemini, SiGooglegeminiHex];
+    if (skill.startsWith("langchain")) return [SiLangchain, SiLangchainHex];
+    if (skill.startsWith("langgraph")) return [SiLanggraph, SiLanggraphHex];
+    if (skill.startsWith("convex")) return [SiConvex, SiConvexHex];
+
+    return [CodeIcon, "#888888"];
+  };
+
+  const [icon, color] = getBase();
+  return [icon, adjustColorForDarkMode(color)];
+}
+
+export const SkillIcon = ({ skill, color }: { skill: string, color: string }) => {
   const [Icon] = getSkillIconAndColor(skill.toLowerCase());
   if (Icon) {
     // using currentColor so it respects the group-hover text color change, 
