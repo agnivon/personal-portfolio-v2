@@ -56,7 +56,9 @@ import {
   SiLanggraph,
   SiLanggraphHex,
   SiConvex,
-  SiConvexHex
+  SiConvexHex,
+  SiVercel,
+  SiVercelHex
 } from "@icons-pack/react-simple-icons";
 import { CodeIcon } from "lucide-react";
 import { IconType } from "react-icons/lib";
@@ -161,7 +163,7 @@ function adjustColorForDarkMode(hexColor: string): string {
       const g = parseInt(hex.substring(2, 4), 16);
       const b = parseInt(hex.substring(4, 6), 16);
       const luminance = 0.2126 * r + 0.7152 * g + 0.0722 * b;
-      
+
       if (luminance < 40) {
         if (luminance < 10) return "#fafafa"; // Return light zinc-50 for near-black
         const factor = 2.5;
@@ -206,6 +208,7 @@ export function getSkillIconAndColor(skill: string): [IconType, string] {
     if (skill.startsWith("langchain")) return [SiLangchain, SiLangchainHex];
     if (skill.startsWith("langgraph")) return [SiLanggraph, SiLanggraphHex];
     if (skill.startsWith("convex")) return [SiConvex, SiConvexHex];
+    if (skill.startsWith("vercel")) return [SiVercel, SiVercelHex]
 
     return [CodeIcon, "#888888"];
   };
