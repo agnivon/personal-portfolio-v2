@@ -171,7 +171,6 @@ const profile = {
           name: "blog",
           title: "Blog URL",
           type: "url",
-          initialValue: "https://blog.agnivon.com/",
         },
       ],
       options: {

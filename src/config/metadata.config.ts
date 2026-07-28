@@ -1,5 +1,6 @@
 import { getProfiles } from "@/sanity/lib/queries";
 import { PROJECT_BY_SLUG_QUERYResult } from "@/sanity/lib/types";
+import { getSiteUrl } from "@/config/env.config";
 import { Metadata } from "next";
 
 const title = "Agnivo Neogi's Portfolio";
@@ -65,25 +66,27 @@ const keywords = [
 ];
 
 export async function getSiteMetadata(): Promise<Metadata> {
+  const siteUrl = getSiteUrl();
   const profiles = await getProfiles();
   const profile = profiles[0];
   if (!profile) return {};
 
   return {
+    metadataBase: new URL(siteUrl),
     title: title,
     description: profile.shortBio,
     keywords: keywords.concat(profile.skills || []),
     authors: [
       {
         name: "Agnivo Neogi",
-        url: "https://www.agnivon.com",
+        url: siteUrl,
       },
     ],
     creator: "Agnivo Neogi",
     openGraph: {
       title: title,
       description: profile.shortBio || "",
-      url: "https://www.agnivon.com",
+      url: siteUrl,
       siteName: title,
       images: profile.profileImage?.image
         ? [{ url: profile.profileImage.image, alt: title }]
@@ -107,21 +110,23 @@ export async function getSiteMetadata(): Promise<Metadata> {
 export async function getProjectMetadata(
   project: PROJECT_BY_SLUG_QUERYResult
 ): Promise<Metadata> {
+  const siteUrl = getSiteUrl();
   return {
+    metadataBase: new URL(siteUrl),
     title: `${project?.name} | Project | ${title}`,
     description: project?.tagline,
     keywords: keywords.concat(project?.keywords || []),
     authors: [
       {
         name: "Agnivo Neogi",
-        url: "https://www.agnivon.com",
+        url: siteUrl,
       },
     ],
     creator: "Agnivo Neogi",
     openGraph: {
       title: title,
       description: project?.tagline || "",
-      url: "https://www.agnivon.com",
+      url: siteUrl,
       siteName: title,
       images:
         project?.screenshots?.map((sc) => ({
@@ -143,3 +148,4 @@ export async function getProjectMetadata(
     },
   };
 }
+
