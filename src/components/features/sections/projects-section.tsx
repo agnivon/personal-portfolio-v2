@@ -36,6 +36,7 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
 
 const Card = ({ project }: { project: Project }) => {
   const validScreenshots = project.screenshots?.filter((sc) => !!sc.image) || [];
+  const firstScreenshot = validScreenshots[0]?.image || project.coverImage?.image;
 
   return (
     <Link href={`/projects/${project.slug}`} className="group block h-full">
@@ -75,13 +76,31 @@ const Card = ({ project }: { project: Project }) => {
                 </div>
               </div>
             )
-          ) : (
+          ) : project.projectUrl ? (
             <Image
               fill
-              src={project.projectUrl ? getMicrolink(project.projectUrl, 400, 300) : project.logo || ""}
+              src={getMicrolink(project.projectUrl, 400, 300)}
               alt={project.name || ""}
               className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
             />
+          ) : firstScreenshot ? (
+            <Image
+              fill
+              src={firstScreenshot}
+              alt={validScreenshots[0]?.alt || project.coverImage?.alt || project.name || ""}
+              className="object-cover object-top group-hover:scale-105 transition-transform duration-500"
+            />
+          ) : (
+            <div className="flex justify-center items-center h-full w-full p-6 bg-zinc-900/60">
+              <div className="relative h-16 w-16">
+                <Image
+                  fill
+                  src={project.logo || ""}
+                  alt={project.name || ""}
+                  className="object-contain"
+                />
+              </div>
+            </div>
           )}
         </div>
         <div className="flex-grow flex flex-col">
