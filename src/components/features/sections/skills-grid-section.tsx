@@ -10,19 +10,19 @@ export default function SkillsGridSection({ skills }: { skills: string[] }) {
         </h2>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+      <div className="flex flex-wrap justify-center gap-4 w-full">
         {skills.map((skill) => {
           const [Icon, color] = getSkillIconAndColor(skill.toLowerCase());
           return (
             <div
               key={skill}
-              className="flex items-center justify-center gap-3 px-5 py-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800/50 backdrop-blur-md hover:bg-zinc-800/80 hover:border-cyan-500/50 hover:shadow-[0_0_15px_rgba(6,182,212,0.1)] transition-all duration-300 cursor-default"
+              className="w-[calc((100%_-_1rem)/2)] sm:w-[calc((100%_-_2rem)/3)] md:w-[calc((100%_-_3rem)/4)] lg:w-[calc((100%_-_4rem)/5)] flex items-center justify-center gap-3 px-5 py-3.5 rounded-xl bg-zinc-900/40 border border-zinc-800/50 backdrop-blur-md hover:bg-zinc-800/80 hover:border-cyan-500/50 hover:shadow-[0_0_15px_rgba(6,182,212,0.1)] transition-all duration-300 cursor-default"
             >
               <Icon 
                 className="w-5 h-5 flex-shrink-0 transition-transform duration-300 hover:scale-110" 
                 color={color} 
               />
-              <span className="text-sm md:text-base font-medium tracking-wide text-zinc-300 transition-colors duration-300">
+              <span className="text-sm md:text-base font-medium tracking-wide text-zinc-300 transition-colors duration-300 truncate">
                 {skill.split(" ")[0]}
               </span>
             </div>

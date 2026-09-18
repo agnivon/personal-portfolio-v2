@@ -21,14 +21,14 @@ export default async function ProjectsPage() {
             be improved.
           </p>
         </section>
-        <div className="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6 mb-12">
+        <div className="flex flex-wrap justify-center gap-6 mb-12 w-full">
           {projects.map((project) => (
             <Link
               key={project._id}
               href={`/projects/${project.slug}`}
-              className="group block h-full"
+              className="group flex flex-col w-full md:w-[calc((100%_-_1.5rem)/2)] xl:w-[calc((100%_-_3rem)/3)]"
             >
-              <div className="h-full flex flex-col bg-zinc-900/40 backdrop-blur-md border border-zinc-800 hover:border-cyan-500/50 p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-800/60 shadow-sm hover:shadow-cyan-500/5">
+              <div className="h-full flex-1 flex flex-col bg-zinc-900/40 backdrop-blur-md border border-zinc-800 hover:border-cyan-500/50 p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-800/60 shadow-sm hover:shadow-cyan-500/5">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-12 h-12 relative flex-shrink-0 bg-zinc-950 rounded-xl p-2 border border-zinc-800">
                     <Image

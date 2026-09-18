@@ -16,7 +16,7 @@ export default function ProjectsSection({ projects }: { projects: Project[] }) {
       <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-zinc-50 mb-10 font-heading text-center">
         Projects
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
+      <div className="flex flex-wrap justify-center gap-6 w-full">
         {featuredProjects.map((project) => (
           <Card project={project} key={project.name} />
         ))}
@@ -39,8 +39,11 @@ const Card = ({ project }: { project: Project }) => {
   const firstScreenshot = validScreenshots[0]?.image || project.coverImage?.image;
 
   return (
-    <Link href={`/projects/${project.slug}`} className="group block h-full">
-      <div className="h-full flex flex-col bg-zinc-900/40 backdrop-blur-md border border-zinc-800 hover:border-cyan-500/50 p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-800/60 shadow-sm hover:shadow-cyan-500/5">
+    <Link
+      href={`/projects/${project.slug}`}
+      className="group flex flex-col w-full md:w-[calc((100%_-_1.5rem)/2)] lg:w-[calc((100%_-_3rem)/3)]"
+    >
+      <div className="h-full flex-1 flex flex-col bg-zinc-900/40 backdrop-blur-md border border-zinc-800 hover:border-cyan-500/50 p-6 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:bg-zinc-800/60 shadow-sm hover:shadow-cyan-500/5">
         <div className="w-full h-40 relative rounded-xl overflow-hidden bg-zinc-800 border border-zinc-800 mb-6 shrink-0 flex items-center justify-center">
           {project.mobile ? (
             validScreenshots.length >= 2 ? (
