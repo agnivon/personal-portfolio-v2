@@ -16,11 +16,16 @@ const ProfilesSection = ({
       <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-zinc-50 mb-10 text-center font-heading">
         Other Profiles
       </h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 w-full">
+      <div className="flex flex-wrap justify-center gap-6 w-full">
         {profiles.map((e) => (
-          <Link href={e.link || ""} key={e.name} target="_blank" className="group block">
+          <Link
+            href={e.link || ""}
+            key={e.name}
+            target="_blank"
+            className="group flex flex-col w-full sm:w-[calc((100%_-_1.5rem)/2)] md:w-[calc((100%_-_3rem)/3)]"
+          >
             <div
-              className="relative bg-zinc-900/40 backdrop-blur-md border border-zinc-800 hover:border-cyan-500/50 p-6 rounded-2xl flex items-center justify-between transition-all duration-300 hover:bg-zinc-800/60 shadow-sm hover:shadow-cyan-500/5"
+              className="relative h-full flex-1 bg-zinc-900/40 backdrop-blur-md border border-zinc-800 hover:border-cyan-500/50 p-6 rounded-2xl flex items-center justify-between transition-all duration-300 hover:bg-zinc-800/60 shadow-sm hover:shadow-cyan-500/5"
             >
               <div className="flex items-center gap-4">
                 {e.logo?.image && (
