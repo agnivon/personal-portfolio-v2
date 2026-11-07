@@ -1,6 +1,9 @@
 # Agnivo Neogi's Portfolio (v2)
 
-A premium, modern personal portfolio built with **Next.js 15**, **Sanity.io**, **Tailwind CSS**, and **Framer Motion**. Designed with a focus on high-fidelity aesthetics, smooth animations, and a seamless developer experience.
+[![Live Site](https://img.shields.io/badge/Live%20Site-agnivon.dev-06b6d4?style=flat-square)](https://agnivon.dev)
+[![Author](https://img.shields.io/badge/Author-Agnivo%20Neogi-zinc?style=flat-square)](https://agnivon.dev)
+
+A premium, modern personal portfolio built with **Next.js 15**, **Sanity.io**, **Tailwind CSS**, and **Framer Motion**. Designed with a focus on high-fidelity aesthetics, smooth animations, and a seamless developer experience. Live at [agnivon.dev](https://agnivon.dev).
 
 ## ✨ Features
 

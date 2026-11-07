@@ -14,22 +14,31 @@ export const VERCEL_PRODUCTION_URL =
   "";
 export const VERCEL_BYPASS = process.env.VERCEL_AUTOMATION_BYPASS_SECRET || "";
 
-export function getSiteUrl(): string {
-  const rawUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ||
-    VERCEL_PRODUCTION_URL ||
-    VERCEL_URL ||
-    "localhost:3000";
+export const AUTHOR_NAME = "Agnivo Neogi";
+export const AUTHOR_SITE = "https://agnivon.dev";
 
-  if (rawUrl.startsWith("http://") || rawUrl.startsWith("https://")) {
-    return rawUrl;
+export function getSiteUrl(): string {
+  // If explicitly configured via NEXT_PUBLIC_SITE_URL, prioritize it
+  const configuredUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim();
+  if (configuredUrl) {
+    const cleanUrl = configuredUrl.replace(/\/+$/, "");
+    return cleanUrl.startsWith("http://") || cleanUrl.startsWith("https://")
+      ? cleanUrl
+      : `https://${cleanUrl}`;
   }
 
-  const protocol =
-    VERCEL_ENV === "development" && !VERCEL_URL && !process.env.NEXT_PUBLIC_SITE_URL
-      ? "http"
-      : "https";
+  // In Vercel production environment
+  if (VERCEL_ENV === "production") {
+    if (VERCEL_PRODUCTION_URL && !VERCEL_PRODUCTION_URL.endsWith(".vercel.app")) {
+      return `https://${VERCEL_PRODUCTION_URL.replace(/\/+$/, "")}`;
+    }
+    return AUTHOR_SITE;
+  }
 
-  return `${protocol}://${rawUrl}`;
+  // In Vercel preview deployment
+  if (VERCEL_URL) {
+    return `https://${VERCEL_URL.replace(/\/+$/, "")}`;
+  }
+
+  return "http://localhost:3000";
 }
-
