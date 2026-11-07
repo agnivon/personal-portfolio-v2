@@ -1,7 +1,7 @@
 import React from "react";
 import { SiGithub, SiX } from "@icons-pack/react-simple-icons";
 import { BiLogoLinkedin } from "react-icons/bi";
-import Link from "next/link";
+import { AUTHOR_NAME, AUTHOR_SITE } from "@/config/env.config";
 
 const Footer = () => {
   return (
@@ -34,7 +34,14 @@ const Footer = () => {
           </a>
         </div>
         <p className="text-zinc-500 text-sm">
-          &copy; {new Date().getFullYear()} Agnivo Neogi. All Rights Reserved.
+          &copy; {new Date().getFullYear()}{" "}
+          <a
+            href={AUTHOR_SITE}
+            className="text-zinc-400 hover:text-cyan-400 transition-colors underline-offset-4 hover:underline"
+          >
+            {AUTHOR_NAME}
+          </a>
+          . All Rights Reserved.
         </p>
       </div>
     </footer>

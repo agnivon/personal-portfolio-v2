@@ -15,6 +15,8 @@ import BackButton from "../ui/back-button";
 import { redirect } from "next/navigation";
 import { Metadata } from "next";
 import { getProjectMetadata } from "@/config/metadata.config";
+import { getSiteUrl } from "@/config/env.config";
+import { ProjectJsonLd } from "../metadata/json-ld";
 
 export async function generateMetadata({
   params,
@@ -26,7 +28,7 @@ export async function generateMetadata({
 
   if (!project) return {};
 
-  return getProjectMetadata(project);
+  return getProjectMetadata(project, name);
 }
 
 export async function ProjectPage({
@@ -40,6 +42,7 @@ export async function ProjectPage({
 
   return (
     <div className="w-full min-h-screen bg-zinc-950 text-zinc-50 py-12 antialiased">
+      <ProjectJsonLd project={project} siteUrl={getSiteUrl()} slug={name} />
       <div className="max-w-4xl mx-auto px-4 md:px-10">
         
         {/* Back Link */}
