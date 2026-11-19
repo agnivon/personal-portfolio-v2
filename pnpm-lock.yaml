@@ -182,8 +182,8 @@ importers:
         specifier: ^13.13.0
         version: 13.13.0(react@19.3.1)
       '@portabletext/react':
-        specifier: ^7.0.1
-        version: 7.0.1(react@19.3.1)
+        specifier: ^8.0.1
+        version: 8.0.1(react@19.3.1)
       '@radix-ui/react-hover-card':
         specifier: ^1.2.1
         version: 1.2.1(@types/react-dom@19.3.0(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
@@ -1935,15 +1935,15 @@ packages:
   '@portabletext/patches@1.1.5':
     resolution: {integrity: sha512-XO9STk1ALQFGvW+gFoY3Ay5ODdr26iRg6ajKHPDanKLko5blPmfcYBpAlfOjFVxvOdeaPmoNuccwlf/0zIp/lA==}
 
-  '@portabletext/react@3.2.1':
-    resolution: {integrity: sha512-RyFLk6u2q6ZyABTdOk+xoNR2Tq/4fcQFEWayNk4Kbd3gHpUUTabqOrDMChcmG6C7YVLSpwIEBwHoBVcy4vK/hA==}
+  '@portabletext/react@3.2.4':
+    resolution: {integrity: sha512-Gq0BaIBw6PMXnN1M9clG7vOa952O4F+CTfANLH/NaxiH5eI1sOx3IoGoGLnPPUTxCKq3F380gz4ycz6WzMtu0Q==}
     engines: {node: ^14.13.1 || >=16.0.0}
     peerDependencies:
       react: ^17 || ^18 || >=19.0.0-0
 
-  '@portabletext/react@7.0.1':
-    resolution: {integrity: sha512-NMedRgByZMSbV6dA7tdM6Jom4J/AfV7xIXcZk3kQMs8bCq6faeY9GbjtgYIYsomdjXvNsVIVx3PXvVPpiUa7mA==}
-    engines: {node: '>=20.19 <22 || >=22.12'}
+  '@portabletext/react@8.0.1':
+    resolution: {integrity: sha512-Fy9UxVhppgEckEvczZytg4bBxiPcZIM49NrJ3sizEoz19aNzJWEYoUj7f3TI94907psEk0yfR145eoOgkedM2A==}
+    engines: {node: '>=22.12'}
     peerDependencies:
       react: ^19
 
@@ -1955,12 +1955,16 @@ packages:
     resolution: {integrity: sha512-5wj+oUaCmHm9Ay1cytPmT1Yc0SrR1twwUIc0qNQ3MtaXaNMPw99Gjt1NcA34yfyKmEf/TAB2NiiT72jFxdddIQ==}
     engines: {node: ^14.13.1 || >=16.0.0}
 
-  '@portabletext/toolkit@5.0.2':
-    resolution: {integrity: sha512-Njc1LE1PMJkTx/wEPqZ6sOWGgFgX2B47fxpOQ/Ia4ByhsZoA5Sq8dNvvV5F052j/xE8TbOLiBEjS848FkKADDQ==}
-    engines: {node: '>=20.19 <22 || >=22.12'}
+  '@portabletext/toolkit@2.0.18':
+    resolution: {integrity: sha512-m3v2WwKQTNNk5BFZlUuPuCW0Zi6iDSpwrium4Ej5L2FHDXhFuwAyEMPXDrvwPvqjES/oJzcwmdKLMhYa44T9BQ==}
+    engines: {node: ^14.13.1 || >=16.0.0}
 
-  '@portabletext/types@2.0.13':
-    resolution: {integrity: sha512-5xk5MSyQU9CrDho3Rsguj38jhijhD36Mk8S6mZo3huv6PM+t4M/5kJN2KFIxgvt4ONpvOEs1pVIZAV0cL0Vi+Q==}
+  '@portabletext/toolkit@6.0.0':
+    resolution: {integrity: sha512-+qSqe0KnefuZfNLUhzQRTpbSKxslZof+3pNwxg0DC8dfZ1yLKyyBUw6iR7EpDL+SJlrnpiBfEcfmEuFitK1NSQ==}
+    engines: {node: '>=22.12'}
+
+  '@portabletext/types@2.0.15':
+    resolution: {integrity: sha512-2e6i2gSQsrA/5OL5Gm4/9bxB9MNO73Fa47zj+0mT93xkoQUCGCWX5fZh1YBJ86hszaRYlqvqG08oULxvvPPp/Q==}
     engines: {node: ^14.13.1 || >=16.0.0 || >=18.0.0}
 
   '@portabletext/types@4.0.2':
@@ -9656,32 +9660,36 @@ snapshots:
       '@sanity/diff-match-patch': 3.2.0
       lodash: 4.18.1
 
-  '@portabletext/react@3.2.1(react@19.3.1)':
+  '@portabletext/react@3.2.4(react@19.3.1)':
     dependencies:
-      '@portabletext/toolkit': 2.0.17
-      '@portabletext/types': 2.0.13
+      '@portabletext/toolkit': 2.0.18
+      '@portabletext/types': 2.0.15
       react: 19.3.1
 
-  '@portabletext/react@7.0.1(react@19.3.1)':
+  '@portabletext/react@8.0.1(react@19.3.1)':
     dependencies:
-      '@portabletext/toolkit': 5.0.2
+      '@portabletext/toolkit': 6.0.0
       '@portabletext/types': 4.0.2
       react: 19.3.1
 
   '@portabletext/to-html@2.0.14':
     dependencies:
-      '@portabletext/toolkit': 2.0.17
-      '@portabletext/types': 2.0.13
+      '@portabletext/toolkit': 2.0.18
+      '@portabletext/types': 2.0.15
 
   '@portabletext/toolkit@2.0.17':
     dependencies:
-      '@portabletext/types': 2.0.13
+      '@portabletext/types': 2.0.15
 
-  '@portabletext/toolkit@5.0.2':
+  '@portabletext/toolkit@2.0.18':
+    dependencies:
+      '@portabletext/types': 2.0.15
+
+  '@portabletext/toolkit@6.0.0':
     dependencies:
       '@portabletext/types': 4.0.2
 
-  '@portabletext/types@2.0.13': {}
+  '@portabletext/types@2.0.15': {}
 
   '@portabletext/types@4.0.2': {}
 
@@ -14035,7 +14043,7 @@ snapshots:
 
   next-sanity@9.10.6(@emotion/is-prop-valid@1.2.2)(@sanity/client@7.25.0)(@sanity/icons@3.8.0(react@19.3.1))(@sanity/types@3.99.0(@types/react@19.2.17))(@sanity/ui@2.16.26(@emotion/is-prop-valid@1.2.2)(react-dom@19.3.1(react@19.3.1))(react-is@18.3.1)(react@19.3.1)(styled-components@6.1.17(react-dom@19.3.1(react@19.3.1))(react@19.3.1)))(next@16.4.6(@babel/core@7.29.7)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react-dom@19.3.1(react@19.3.1))(react-is@18.3.1)(react@19.3.1)(sanity@3.99.0(@emotion/is-prop-valid@1.2.2)(@types/node@26.6.6)(@types/react-dom@19.3.0(@types/react@19.2.17))(@types/react@19.2.17)(immer@10.1.1)(jiti@2.4.2)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(styled-components@6.1.17(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(terser@5.39.0)(typescript@5.8.3)(yaml@2.9.1))(styled-components@6.1.17(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(typescript@5.8.3):
     dependencies:
-      '@portabletext/react': 3.2.1(react@19.3.1)
+      '@portabletext/react': 3.2.4(react@19.3.1)
       '@sanity/client': 7.25.0
       '@sanity/icons': 3.8.0(react@19.3.1)
       '@sanity/next-loader': 1.5.2(@sanity/types@3.99.0(@types/react@19.2.17))(next@16.4.6(@babel/core@7.29.7)(@types/node@26.6.6)(react-dom@19.3.1(react@19.3.1))(react@19.3.1))(react@19.3.1)
@@ -14955,7 +14963,7 @@ snapshots:
       '@mux/mux-player-react': 3.13.2(@types/react-dom@19.3.0(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)
       '@portabletext/block-tools': 1.1.38(@sanity/types@3.99.0(@types/react@19.2.17))(@types/react@19.2.17)
       '@portabletext/editor': 1.58.1(@sanity/schema@3.99.0(@types/react@19.2.17))(@sanity/types@3.99.0(@types/react@19.2.17))(@types/react@19.2.17)(react-dom@19.3.1(react@19.3.1))(react@19.3.1)(rxjs@7.8.2)
-      '@portabletext/react': 3.2.1(react@19.3.1)
+      '@portabletext/react': 3.2.4(react@19.3.1)
       '@portabletext/toolkit': 2.0.17
       '@rexxars/react-json-inspector': 9.0.1(react@19.3.1)
       '@sanity/asset-utils': 2.2.1
