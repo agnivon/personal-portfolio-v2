@@ -65,7 +65,7 @@
     "@secretlint/secretlint-rule-pattern": "^13.1.0",
     "@secretlint/secretlint-rule-preset-recommend": "^13.1.0",
     "@tailwindcss/postcss": "^4.3.3",
-    "@types/node": "^25.9.3",
+    "@types/node": "^26.6.6",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@types/three": "^0.174.0",
