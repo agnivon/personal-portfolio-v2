@@ -55,7 +55,7 @@
     "sanity": "^3.99.0",
     "simplex-noise": "^4.0.3",
     "styled-components": "^6.1.17",
-    "tailwind-merge": "^3.6.0",
+    "tailwind-merge": "^3.7.0",
     "tailwindcss-animate": "^1.0.7",
     "three": "^0.187.0",
     "uuid": "^14.0.1"
