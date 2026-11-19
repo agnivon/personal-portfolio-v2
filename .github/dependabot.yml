@@ -6,6 +6,13 @@ updates:
       interval: "weekly"
     target-branch: "dev"
     open-pull-requests-limit: 10
+    groups:
+      tsparticles:
+        patterns:
+          - "@tsparticles/*"
+    ignore:
+      - dependency-name: "@tsparticles/*"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: "github-actions"
     directory: "/"
